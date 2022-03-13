@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DASHMIN - Bootstrap Admin Template</title>
+    <title>Se connecter à votre compte BudgIX</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -40,6 +40,11 @@
         <!-- Sign In Start -->
         <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
             <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                    {% if app.user %}
+                        <div class="mb-3 text-center">
+                            Vous êtes connecté(e) en tant que {{ app.user.userIdentifier }} <br> <a href="{{ path('app_logout') }}">Me déconnecter</a>
+                        </div>
+                    {% endif %}
                 <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
                     <div class="d-flex align-items-center justify-content-between mb-3">
                         <a href="index.html" class="">
@@ -52,11 +57,6 @@
                         <div class="alert alert-danger text-center">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                     {% endif %}
 
-                    {% if app.user %}
-                        <div class="mb-3">
-                            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-                        </div>
-                    {% endif %}
                     
                     <div class="form-floating mb-3">
                         <input type="email" value="{{ last_username }}" class="form-control" id="floatingInput" name="email"  autocomplete="email" required autofocus placeholder="name@example.com">

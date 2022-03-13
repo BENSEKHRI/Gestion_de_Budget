@@ -145,6 +145,9 @@
     "psr/log": {
         "version": "3.0.0"
     },
+    "psy/psysh": {
+        "version": "v0.11.2"
+    },
     "sebastian/cli-parser": {
         "version": "1.0.1"
     },
@@ -258,6 +261,9 @@
     },
     "symfony/event-dispatcher-contracts": {
         "version": "v3.0.0"
+    },
+    "symfony/expression-language": {
+        "version": "v6.0.3"
     },
     "symfony/filesystem": {
         "version": "v6.0.6"
@@ -464,6 +470,9 @@
     },
     "symfony/yaml": {
         "version": "v6.0.3"
+    },
+    "theofidry/psysh-bundle": {
+        "version": "4.5.0"
     },
     "theseer/tokenizer": {
         "version": "1.2.1"

@@ -4,6 +4,7 @@ Gestion de budget est un site internet qui permet la gestion de budget au sein d
 
 # Pré-requis
     * PHP 8.1
+    * nodejs et npm
     * Composer
     * Symfony CLI
 
@@ -16,5 +17,8 @@ symfony check:requirements
 ### Lancer l'environnement de développement
 
 ```bash
+composer install 
+npm install
+npm run build
 symfony serve -d
 ```

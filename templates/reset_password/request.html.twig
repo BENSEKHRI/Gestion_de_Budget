@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Se connecter à votre compte BudgIX{% endblock %}
+{% block title %}Réinitialisez votre mot de passe{% endblock %}
 
 {% block body %}
+
+
 
 
 <head>
@@ -28,49 +30,34 @@
 
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Chargement...</span>
-            </div>
-        </div>
-        <!-- Spinner End -->
 
     <form method="post" class="container-fluid">
         <!-- Sign In Start -->
         <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
             <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
-                    {% if app.user %}
-                        <div class="mb-3 text-center">
-                            Vous êtes connecté(e) en tant que {{ app.user.userIdentifier }} <br> <a href="{{ path('app_logout') }}">Me déconnecter</a>
-                        </div>
-                    {% endif %}
                 <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
                     <div class="d-flex align-items-center justify-content-between mb-3">
                         <a href="index.html" class="">
                             <h3 class="text-primary"><i class="fa fa-solid fa-chart-pie me-2"></i>BudgIX</h3>
                         </a>
-                        <h4>Connexion</h4>
                     </div>
 
-                    {% if error %}
-                        <div class="alert alert-danger text-center">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                    {% endif %}
+                    {% for flash_error in app.flashes('reset_password_error') %}
+                        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                    {% endfor %}
+                    <h5>Réinitialisez votre mot de passe</h5>
 
-                    
-                    <div class="form-floating mb-3">
-                        <input type="email" value="{{ last_username }}" class="form-control" id="floatingInput" name="email"  autocomplete="email" required autofocus placeholder="name@example.com">
-                        <label for="floatingInput">E-mail</label>
-                    </div>
-                    <div class="form-floating mb-4">
-                        <input type="password" class="form-control" id="floatingPassword" name="password" autocomplete="current-password" required placeholder="Password">
-                        <label for="floatingPassword">Mot de passe</label>
-                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-                    </div>
-                    <div class="td-flex align-items-center justify-content-between mb-4">
-                        <a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié ?</a>
-                    </div>
-                    <button type="submit" class="btn btn-primary py-3 w-100 mb-4">S'identifier</button>
+                    {{ form_start(requestForm) }}
+                        {{ form_widget(requestForm.email) }}
+                        <div>
+                            <small>
+                                Entrez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.
+                            </small>
+                        </div>
+
+                        <button class="btn btn-primary">Recevoir un e-mail</button>
+                    {{ form_end(requestForm) }}
+                
                 </div>
             </div>
         </div>
@@ -93,6 +80,8 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </body>
 
+
+
+
+
 {% endblock %}
-
-

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}Modifier le compte{% endblock %}
 
 {% block body %} 
 <body>
@@ -20,39 +20,31 @@
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
                     <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
 
-                        {{ form_start(registrationForm) }}
+                        {{ form_start(form) }}
 
 
                         <div class="d-flex align-items-center justify-content-between mb-3">
                             <a href="{{ path('app_home') }}" class="">
                                 <h3 class="text-primary"><i class="fa fa-solid fa-chart-pie me-2"></i>BudgIX</h3>
                             </a>
-                            <h4>Inscription</h4>
+                            <h5>Modification</h5>
                         </div>
                         <div class="form-floating mb-3">
-                            {{ form_row(registrationForm.prenom) }}
+                            {{ form_row(form.prenom) }}
                         </div>
                         <div class="form-floating mb-3">
-                            {{ form_row(registrationForm.nom) }}
+                            {{ form_row(form.nom) }}
                         </div>
                         <div class="form-floating mb-3">
-                            {{ form_row(registrationForm.email) }}
-                        </div>
-                        <div class="form-floating mb-4">
-                            {{ form_row(registrationForm.plainPassword, {
-                                label: 'Password'
-                            }) }}
+                            {{ form_row(form.email) }}
                         </div>
                         <div class="form-floating mb-3">
-                            {{ form_row(registrationForm.telephone) }}
+                            {{ form_row(form.telephone) }}
                         </div>
-                        <div class="form-check form-switch mb-4">
-                            <label class="form-check-label" for="flexSwitchCheckDefault">{{ form_row(registrationForm.roles) }}</label>
-                            
-                        </div>
-                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Inscrire</button>
+
+                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Valider</button>
                     
-                        {{ form_end(registrationForm) }}
+                        {{ form_end(form) }}
                     
 
                     </div>

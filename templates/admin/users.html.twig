@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+
+
+<head>
+    <title>Liste des utilisateurs</title>
+
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    
+    <!-- Favicon -->
+    <link href="/img/favicon.ico" rel="icon">
+
+</head>
+
+
+<body>
+<!-- Table Start -->
+{{ include('_navbar.html.twig') }}
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="bg-light rounded h-100 p-4">
+                    <h3 class="mb-4 text-center text-uppercase">La liste des utilisateurs</h3>
+                        <div class="container-fluid mt-3">
+                                {% for message in app.flashes('success') %}
+                                    <div class="alert alert-success text-center">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+
+                                {% for message in app.flashes('info') %}
+                                    <div class="alert alert-info text-center">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+
+                                {% for message in app.flashes('warning') %}
+                                    <div class="alert alert-warning text-center">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+
+                                {% for message in app.flashes('danger') %}
+                                    <div class="alert alert-danger text-center">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Prénom</th>
+                                    <th scope="col">NOM</th>
+                                    <th scope="col">E-mail</th>
+                                    <th scope="col">Téléphone</th>
+                                    <th scope="col">Rôles</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {# On boucle sur les utilisateurs #}
+                                {% for user in users %}
+                                    {% if user != app.user %}
+                                        {% if not (users is empty) %}
+                                        <tr>
+                                            <td>{{ user.prenom|capitalize}}</td>
+                                            <td>{{ user.nom|upper }}</td>
+                                            <td>{{ user.email }}</td>
+                                            <td>{{ user.telephone }}</td>
+                                            <td>
+                                                {% for role in user.roles %}
+                                                    |
+                                                    {% if role == "ROLE_ADMIN" %}
+                                                        Administrateur                                                
+                                                    {% elseif role == "ROLE_USER" %}
+                                                        Utilisateur                                                
+                                                    {% endif %}
+                                                    
+                                                {% endfor %}
+                                                |
+                                            </td>
+                                            <td> 
+                                                <a href="{{ path('app_admin_modifier_utilisateur', {'id':user.id}) }}" class="btn btn-outline-info rounded-pill"><i class="fa fa-solid fa-wrench"></i></a> 
+                                                <a href="{{ path('app_admin_supprimer_utilisateur', {'id':user.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');" class="btn btn-outline-danger rounded-pill"><i class="fa fa-solid fa-minus"></i></a>                                             
+                                            </td>
+
+                                        </tr>
+                                        {% else %}
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td> Il n'y a pas d'utilisateur inscrits pour le moment. </td>
+                                        </tr>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Table End -->
+
+</body>
+{% endblock %}

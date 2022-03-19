@@ -99,10 +99,6 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('app_admin_utilisateurs');
     }
     
-
-
-    
-
      /**
      *  Modifier le compte de l'utilisateuer courant
      */
@@ -115,13 +111,16 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
-            $this->addFlash('success', 'Votre compte a été mise à jour !');
+            $this->addFlash('success', 'Les informations de votre compte ont été modifiées !');
             return $this->redirectToRoute('app_home');
         }
         return $this->render('admin/editAccount.html.twig', [
           'form' => $form->createView()
         ]);
      }
+
+     
+
 
      /**
      *  Modifier le mot de passe de l'utilisateur courant

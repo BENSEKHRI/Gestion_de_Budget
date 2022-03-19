@@ -56,7 +56,7 @@
                                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                         </div>
                         <div class="td-flex align-items-center justify-content-between mb-4">
-                            <a href="#">Mot de passe oublié ?</a>
+                            <a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié ?</a>
                         </div>
                         <button type="submit" class="btn btn-primary py-3 w-100 mb-4">S'identifier</button>
                     </div>

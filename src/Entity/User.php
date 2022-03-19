@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'Il existe déjà un compte avec cet E-mail')]
@@ -18,22 +19,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $id;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
+    #[Assert\Email()]
+    #[Assert\Length(min: 2, max: 180)]
     private $email;
 
     #[ORM\Column(type: 'json')]
+    #[Assert\NotNull()]
     private $roles = [];
 
     #[ORM\Column(type: 'string')]
+    #[Assert\NotNull()]
     private $password;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\Length(min: 2, max: 255)]
     private $prenom;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\Length(min: 2, max: 255)]
     private $nom;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $telephone;
+
 
     public function getId(): ?int
     {

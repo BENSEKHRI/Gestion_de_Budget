@@ -41,6 +41,11 @@
                         <div class="form-floating mb-3">
                             {{ form_row(userForm.telephone) }}
                         </div>
+                        <div class="form-floating mb-4">
+                            {{ form_row(userForm.plainPassword, {
+                                label: 'Password'
+                            }) }}
+                        </div>
                         <div class="form-check form-switch mb-4">
                             <label class="form-check-label" for="flexSwitchCheckDefault">{{ form_row(userForm.roles) }}</label>
                             

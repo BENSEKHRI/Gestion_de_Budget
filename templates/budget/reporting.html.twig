@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Work Flow{% endblock %}
+
+{% block body %}
+
+
+<head>
+
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    
+</head>
+
+
+<body>
+<!-- Table Start -->
+{{ include('_navbar.html.twig') }}
+<div class="container-fluid pt-0 px-3">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-light rounded h-100 p-4">
+                <h3 class="mb-4 text-center text-uppercase">Reporting</h3>
+                <div class="table-responsive ">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Géographie</th>
+                                <th scope="col">Canal</th>
+                                <th scope="col">Produit</th>
+                                <th scope="col">Ventes</th>
+                                <th scope="col">Version</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {# On boucle sur les lignes du budget #}
+                            
+                            {% for budget in budgets %}
+                                {% if not (budgets is empty) %}
+                                <tr>
+                                    <td>{{ budget.geographie|capitalize}}</td>
+                                    <td>{{ budget.canal|capitalize }}</td>
+                                    <td>{{ budget.produit|capitalize }}</td>
+                                    <td>{{ budget.ventes|capitalize }}</td>
+                                    <td>{{ budget.version|capitalize }}</td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td> Il n'y a aucune ligne dans votre grille budgétaire. </td>
+                                </tr>
+                                {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Table End -->
+</body>
+{% endblock %}

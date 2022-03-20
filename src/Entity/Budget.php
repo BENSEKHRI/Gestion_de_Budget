@@ -50,7 +50,7 @@ class Budget
         return $this->canal;
     }
 
-    public function setCanal(string $produit): self
+    public function setCanal(string $canal): self
     {
         $this->canal = $canal;
 

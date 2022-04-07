@@ -3,9 +3,13 @@
 namespace App\Controller;
 
 use App\Repository\UserRepository;
-use App\Entity\Budget;
-use App\Form\BudgetType;
-use App\Repository\BudgetRepository;
+use App\Entity\Fait;
+use App\Entity\Canal;
+use App\Entity\Geographie;
+use App\Entity\Produit;
+use App\Entity\Temps;
+use App\Form\FaitType;
+use App\Repository\FaitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,17 +18,17 @@ use Doctrine\ORM\EntityManagerInterface;
 use \Symfony\Bundle\FrameworkBundle\Controller\ControllerTrait;
 
 
-class BudgetController extends AbstractController
+class FaitController extends AbstractController
 {
     /**
-     * @var BudgetRepository $repository
+     * @var FaitRepository $repository
      */
-    private $BudgetRepository;
+    private $FaitRepository;
 
 
-    public function __construct(BudgetRepository $BudgetRepository, EntityManagerInterface $em)
+    public function __construct(FaitRepository $FaitRepository, EntityManagerInterface $em)
     {
-        $this->BudgetRepository = $BudgetRepository;
+        $this->FaitRepository = $FaitRepository;
     }
 
     #[Route('/budget', name: 'app_budget')]
@@ -39,10 +43,10 @@ class BudgetController extends AbstractController
      *  Liste des lignes budgetaire du site dans le reporting.
      */
     #[Route('/budget/reporting', name: 'app_budget_reporting')]
-    public function reporting(BudgetRepository $budgets, UserRepository $users)
+    public function reporting(FaitRepository $faits, UserRepository $users)
     {
         return $this->render("budget/reporting.html.twig", [
-            'budgets' => $budgets->findAll(),
+            'faits' => $faits->findAll(),
             'users' => $users->findAll(),
         ]);
     }
@@ -51,10 +55,10 @@ class BudgetController extends AbstractController
      *  Liste des lignes budgetaire du site dans la saisie budgètaire.
      */
     #[Route('/budget/saisie-budgetaire', name: 'app_budget_saisie_budgetaire')]
-    public function saisieBudgetaire(BudgetRepository $budgets, UserRepository $users)
+    public function saisieBudgetaire(FaitRepository $faits, UserRepository $users)
     {
         return $this->render("budget/saisieBudgetaire.html.twig", [
-            'budgets' => $budgets->findAll(),
+            'faits' => $faits->findAll(),
             'users' => $users->findAll(),
         ]);
     }
@@ -63,23 +67,23 @@ class BudgetController extends AbstractController
      * Ajouter une nouvelle ligne budgétaire
      */
     #[Route('/budget/nouvelle-ligne', name: 'app_budget_nouvelle_ligne')]
-    public function newBudget (Request $request, EntityManagerInterface $entityManager, BudgetRepository $budgets, UserRepository $users)
+    public function newBudget (Request $request, EntityManagerInterface $entityManager, FaitRepository $faits, UserRepository $users)
     {
-      $budget = new Budget;
+      $fait = new Fait;
 
-      $form = $this->createForm(BudgetType::class, $budget);
+      $form = $this->createForm(FaitType::class, $fait);
       $form->handleRequest($request);
       if ($form->isSubmitted() && $form->isValid()) {
-        $entityManager->persist($budget);
+        $entityManager->persist($fait);
         $entityManager->flush();
         $this->addFlash('success', 'Ligne budgétaire créée !');
         return $this->redirectToRoute('app_budget_saisie_budgetaire');
       }
 
       return $this->render('budget/NewSaisieBudgetaire.html.twig', [
-        'budget' => $budget,
-        'budgetForm' => $form->createView(),
-        'budgets' => $budgets->findAll(),
+        'fait' => $fait,
+        'faitForm' => $form->createView(),
+        'faits' => $faits->findAll(),
         'users' => $users->findAll(),
       ]);
 
@@ -89,26 +93,26 @@ class BudgetController extends AbstractController
      *  Modifier une ligne budgétaire 
      */
     #[Route('/budget/modifier/{id}', name: 'app_budget_modifier_ligne')]
-    public function editBudget($id, Request $request, EntityManagerInterface $entityManager, BudgetRepository $budgets, UserRepository $users)
+    public function editBudget($id, Request $request, EntityManagerInterface $entityManager, FaitRepository $faits, UserRepository $users)
     {
-        $budget = $this->BudgetRepository->find($id);
+        $fait = $this->FaitRepository->find($id);
 
-        if (! $budget) {
+        if (! $fait) {
             throw $this->createNotFoundException('Budget #' . $id . ' pas trouvé !');
         }
 
-        $form = $this->createForm(BudgetType::class, $budget);
+        $form = $this->createForm(FaitType::class, $fait);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($budget);
+            $entityManager->persist($fait);
             $entityManager->flush();
             $this->addFlash('info', 'Ligne budgétaire modifiée !');
             return $this->redirectToRoute('app_budget_saisie_budgetaire');
         }
         return $this->render('budget/EditSaisieBudgetaire.html.twig', [
-            'budgetForm' => $form->createView(),
-            'budgets' => $budgets->findAll(),
+            'faitForm' => $form->createView(),
+            'faits' => $faits->findAll(),
             'users' => $users->findAll(),
         ]);
     }
@@ -119,9 +123,9 @@ class BudgetController extends AbstractController
     #[Route('/budget/supprimer/{id}', name: 'app_budget_supprimer_ligne')]
     public function deleteBudget($id, EntityManagerInterface $entityManager)
     {
-        $budget = $this->BudgetRepository->find($id);
+        $fait = $this->FaitRepository->find($id);
 
-        $entityManager->remove($budget);
+        $entityManager->remove($fait);
         $entityManager->flush();
         $this->addFlash('danger', 'Ligne budgétaire supprimée !');
         return $this->redirectToRoute('app_budget_saisie_budgetaire');

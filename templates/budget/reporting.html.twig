@@ -28,21 +28,24 @@
                                 <th scope="col">Géographie</th>
                                 <th scope="col">Canal</th>
                                 <th scope="col">Produit</th>
-                                <th scope="col">Ventes</th>
-                                <th scope="col">Version</th>
+                                <th scope="col">Actuel</th>
+                                <th scope="col">fait</th>
+                                <th scope="col">Mois</th>
+                                <th scope="col">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {# On boucle sur les lignes du budget #}
+                            {# On boucle sur les lignes du fait #}
                             
-                            {% for budget in budgets %}
-                                {% if not (budgets is empty) %}
+                            {% for fait in faits %}
+                                {% if not (faits is empty) %}
                                 <tr>
-                                    <td>{{ budget.geographie|capitalize}}</td>
-                                    <td>{{ budget.canal|capitalize }}</td>
-                                    <td>{{ budget.produit|capitalize }}</td>
-                                    <td>{{ budget.ventes|capitalize }}</td>
-                                    <td>{{ budget.version|capitalize }}</td>
+                                    <td>{{ fait.geographie|capitalize}}</td>
+                                    <td>{{ fait.canal|capitalize }}</td>
+                                    <td>{{ fait.produit|capitalize }}</td>
+                                    <td>{{ fait.actual }}</td>
+                                    <td>{{ fait.budget }}</td>
+                                    <td>{{ fait.date }}</td>
                                 </tr>
                                 {% else %}
                                 <tr>

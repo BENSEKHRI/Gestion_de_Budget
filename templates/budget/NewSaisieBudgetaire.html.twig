@@ -20,7 +20,7 @@
     <div class="widget g-4">
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
-                <h3 class="mb-4 text-center text-uppercase">Sasie Budgétaire</h3>
+                <h3 class="mb-4 text-center text-uppercase">Saisie Budgétaire</h3>
                 <div class="table-responsive ">
                     <table class="table table-bordered">
                         <thead>
@@ -28,25 +28,27 @@
                                 <th scope="col">Géographie</th>
                                 <th scope="col">Canal</th>
                                 <th scope="col">Produit</th>
-                                <th scope="col">Ventes</th>
-                                <th scope="col">Version</th>
+                                <th scope="col">Actuel</th>
+                                <th scope="col">Budget</th>
+                                <th scope="col">Mois</th>
                                 <th scope="col">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                        {{ form_start(budgetForm) }}
+                        {{ form_start(faitForm) }}
                             
                             <tr>
-                                <td> {{ form_widget(budgetForm.geographie) }}</td>
-                                <td> {{ form_widget(budgetForm.canal) }}</td>
-                                <td> {{ form_widget(budgetForm.produit) }}</td>
-                                <td> {{ form_widget(budgetForm.ventes) }}</td>
-                                <td> {{ form_widget(budgetForm.version) }}</td>
+                                <td> {{ form_widget(faitForm.geographie) }}</td>
+                                <td> {{ form_widget(faitForm.canal) }}</td>
+                                <td> {{ form_widget(faitForm.produit) }}</td>
+                                <td> {{ form_widget(faitForm.actual) }}</td>
+                                <td> {{ form_widget(faitForm.budget) }}</td>
+                                <td> {{ form_widget(faitForm.date) }}</td>
                                 <td> 
                                     <button type="submit" class="btn btn-outline-info rounded-pill"><i class="fa fa-solid fa-check"></i></button>
                                 </td>
                             </tr>
-                        {{ form_end(budgetForm) }}
+                        {{ form_end(faitForm) }}
 
                         </tbody>
                     </table>

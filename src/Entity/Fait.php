@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\FaitRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: FaitRepository::class)]
@@ -19,16 +21,16 @@ class Fait
     #[ORM\Column(type: 'float')]
     private $budget;
 
-    #[ORM\OneToOne(targetEntity: Canal::class, cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(targetEntity: Canal::class, inversedBy: 'faits')]
     private $canal;
 
-    #[ORM\OneToOne(targetEntity: Temps::class, cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(targetEntity: Temps::class, inversedBy: 'faits')]
     private $date;
 
-    #[ORM\OneToOne(targetEntity: Produit::class, cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(targetEntity: Produit::class, inversedBy: 'faits')]
     private $produit;
 
-    #[ORM\OneToOne(targetEntity: Geographie::class, cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(targetEntity: Geographie::class, inversedBy: 'faits')]
     private $geographie;
 
     public function getId(): ?int

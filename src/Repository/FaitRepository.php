@@ -3,10 +3,13 @@
 namespace App\Repository;
 
 use App\Entity\Fait;
+use App\Entity\FaitSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\QueryBuilder;
+
 
 /**
  * @method Fait|null find($id, $lockMode = null, $lockVersion = null)
@@ -73,4 +76,40 @@ class FaitRepository extends ServiceEntityRepository
         ;
     }
     */
+
+
+    
+
+    public function faitSearch($criteria)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.canal = :canal')
+            ->setParameter('canal', $criteria->getCanal())
+            ->andWhere('c.geographie = :geographie')
+            ->setParameter('geographie', $criteria->getGeographie())
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
+    public function findAllVisibleQuery(FaitSearch $search)
+    {   
+        $query = $this->createQueryBuilder('f'); 
+        
+        if ($search->getCanal()) {
+            $query = $query
+                ->andWhere('f.canal === :canal')
+                ->setParameter('canal', $search->getCanal());
+        }
+        
+        if ($search->getGeographie()) {
+            $query = $query
+                ->andhere('f.geographie === :geographie')
+                ->setParameter('geographie', $search->getGeographie());
+        }
+
+        return $query->getQuery();
+
+    }
 }

@@ -4,17 +4,21 @@ namespace App\Controller;
 
 use App\Repository\UserRepository;
 use App\Entity\Fait;
+use App\Entity\FaitSearch;
 use App\Entity\Canal;
 use App\Entity\Geographie;
 use App\Entity\Produit;
 use App\Entity\Temps;
 use App\Form\FaitType;
+use App\Form\FaitSearchType;
 use App\Repository\FaitRepository;
+use App\Repository\FaitSearchRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use \Symfony\Bundle\FrameworkBundle\Controller\ControllerTrait;
 
 
@@ -55,11 +59,20 @@ class FaitController extends AbstractController
      *  Liste des lignes budgetaire du site dans la saisie budgètaire.
      */
     #[Route('/budget/saisie-budgetaire', name: 'app_budget_saisie_budgetaire')]
-    public function saisieBudgetaire(FaitRepository $faits, UserRepository $users)
+    public function saisieBudgetaire(PaginatorInterface  $paginator,Request $request, FaitRepository $faitsRepository, UserRepository $users)
     {
+
+        $search = new FaitSearch();
+        $form = $this->createForm(FaitSearchType::class, $search);
+        $form->handleRequest($request);
+
+        $criteria = $form->getData();
+        $faits = $faitsRepository->faitSearch($criteria);
+
         return $this->render("budget/saisieBudgetaire.html.twig", [
-            'faits' => $faits->findAll(),
+            'faits' => $faits,
             'users' => $users->findAll(),
+            'form'  => $form->createView(),
         ]);
     }
 

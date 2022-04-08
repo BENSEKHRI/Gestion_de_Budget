@@ -25,19 +25,30 @@
                     <a href="{{ path('app_budget_nouvelle_ligne')}}" class="btn btn-outline-success rounded-pill"><i class="fa fa-solid fa-plus"></i></a> 
                 </div>
 
-                <div class="table-responsive ">
-                {% for fait in faits %}
-                    {% if not (faits is empty) %}
+                
+
+                <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
-                            <tr>
-                                <th>Geography</th>
-                                <th>Channel</th>
-                            </tr>
-                            <tr>
-                                <td>{{ fait.geographie.getPays()|capitalize}}</td>
-                                <td>{{ fait.canal.getTypeCanal()|capitalize }}</td>
-                            </tr>
+
+
+                            {{form_start(form)}}
+                                <tr>
+                                    <th>Geography</th>
+                                    <th>Channel</th>
+                                </tr>
+                                <tr>
+                                    <td>{{ form_row(form.geographie) }}</td>
+                                    <td>{{ form_row(form.canal) }}</td>
+                                </tr>
+                                <div class="col">
+                                    <button class="btn btn-primary"> Rechercher </button> 
+                                </div>
+                                
+                            {{form_end(form)}}
+
+
+
                             <tr class= "table">
                                 <th scope="col"></th>
                                 <th scope="col"></th>
@@ -47,31 +58,34 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {% for fait in faits %}
+                                {% if not (faits is empty) %}
                             {# On boucle sur les lignes des faits #}
                             
 
                                 <tr>
                                     <th class="table-danger">{{ fait.produit.getNomProduit()|capitalize }}</th>
                                     <th class="table-danger">Price</th>
-                                    <td>{{ fait.actual }} €</td>
-                                    <td>{{ fait.budget }} €</td>
+                                    <td class="table-warning">{{ fait.actual }} €</td>
+                                    <td class="table-success">{{ fait.budget }} €</td>
                                     {% set variance = fait.actual-fait.budget %}
-                                    <td>{{ variance }} €</td>
+                                    <td class="table-info">{{ variance }} €</td>
 
                                     <td> 
                                         <a href="{{ path('app_budget_modifier_ligne', {'id':fait.id}) }}" class="btn btn-outline-info rounded-pill"><i class="fa fa-solid fa-wrench"></i></a> 
                                         <a href="{{ path('app_budget_supprimer_ligne', {'id':fait.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?');" class="btn btn-outline-danger rounded-pill"><i class="fa fa-solid fa-minus"></i></a>                                             
                                     </td>
                                 </tr>
+                            {% else %}
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td> Il n'y a aucune ligne dans votre grille budgétaire. </td>
+                                </tr>
+                                {% endif %}
+                                </br>
+                            {% endfor %}
                         </tbody>
                     </table>
-                {% else %}
-                    <tr>
-                        <th scope="row">3</th>
-                        <td> Il n'y a aucune ligne dans votre grille budgétaire. </td>
-                    </tr>
-                    {% endif %}
-                {% endfor %}
                 </div>
             </div>
         </div>

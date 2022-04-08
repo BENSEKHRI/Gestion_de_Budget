@@ -2,22 +2,19 @@
 
 namespace App\Form;
 
-use App\Entity\Fait;
+use App\Entity\FaitSearch;
 use App\Entity\Geographie;
 use App\Repository\GeographieRepository;
 use App\Entity\Canal;
-use App\Entity\Produit;
-use App\Repository\ProduitRepository;
-use App\Entity\Temps;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 
-class FaitType extends AbstractType
+
+class FaitSearchType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -34,7 +31,8 @@ class FaitType extends AbstractType
                                         return $pays->createQueryBuilder('g')->orderBy('g.pays', 'ASC');
                 },
                 'required' => false
-            ])   
+                ])   
+
             ->add('canal', EntityType::class, [
                 'attr' => [
                     'class' => 'form-control'
@@ -45,32 +43,20 @@ class FaitType extends AbstractType
                 'choice_label' => 'typeCanal',
                 'required' => false
             ])
-            ->add('produit', EntityType::class, [
-                'attr' => [
-                    'class' => 'form-control'
-                ],
-                'label' => 'Produit', 
-                'class' => Produit::class,
-                'choice_label' => 'nomProduit',
-                'query_builder' =>  function(ProduitRepository $nomProduit) {
-                    return $nomProduit->createQueryBuilder('p')->orderBy('p.nomProduit', 'ASC');
-                },
-                'required' => false
-            ])  
-            ->add('actual')
-            ->add('budget')
-            ->add('date', EntityType::class, [
-                'class' => Temps::class,
-                'choice_label' => 'date',
-                'required' => false
-            ])
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Fait::class,
+            'data_class' => FaitSearch::class,
+            'method' => 'get',
+            'csrf_protection' => false,
         ]);
+    }
+
+    public function getBlockPrefix()
+    {
+        return '';
     }
 }

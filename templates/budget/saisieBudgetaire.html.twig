@@ -20,46 +20,48 @@
     <div class="row g-4">
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
-                <div class="mb-2">
+                <div class="mb-3">
                     <h3 class="text-center text-uppercase">Saisie Budgétaire</h3>
-                    <a href="{{ path('app_budget_nouvelle_ligne')}}" class="btn btn-outline-success rounded-pill"><i class="fa fa-solid fa-plus"></i></a> 
                 </div>
 
-                
+                <div class="table-responsive col-4 mx-auto">
+                    <table class="table table-bordered">
+                        {{form_start(form)}}
+                            <tr>
+                                <td class="text-center align-middle">Géographie</td>
+                                <td>{{ form_widget(form.geographie) }}</td>
+                                <td class ="align-middle"><button type="submit" class="btn btn-outline-warning rounded-pill"><i class="bi bi-search"></i></button></td>
 
-                <div class="table-responsive">
+                            </tr>
+                            <tr>
+                                <td class="text-center align-middle">Canal</td>
+                                <td>{{ form_widget(form.canal) }}</td>
+                                <td><a href="{{ path('app_budget_nouvelle_ligne')}}" class="btn btn-outline-success rounded-pill"><i class="fa fa-solid fa-plus"></i></a></td>
+                            </tr>
+                            
+                        {{form_end(form)}}
+                    </table>
+                </div>
+
+                <div class="table-responsive align-middle text-center">
+
+                    {% for fait in faits %}
+                        {% if not (faits is empty) %}
                     <table class="table table-bordered">
                         <thead>
-
-
-                            {{form_start(form)}}
-                                <tr>
-                                    <th>Geography</th>
-                                    <th>Channel</th>
-                                </tr>
-                                <tr>
-                                    <td>{{ form_row(form.geographie) }}</td>
-                                    <td>{{ form_row(form.canal) }}</td>
-                                </tr>
-                                <div class="col">
-                                    <button class="btn btn-primary"> Rechercher </button> 
-                                </div>
+                            <tr class="table">
+                                <th scope="col" colspan="2"rowspan="2"></th>
+                                <th scope="col" colspan="3" class="table-danger text-center">{{ fait.date|date('M/Y') }}</th>
                                 
-                            {{form_end(form)}}
-
-
+                            </tr>
 
                             <tr class= "table">
-                                <th scope="col"></th>
-                                <th scope="col"></th>
                                 <th scope="col" class="table-danger">Actual</th>
                                 <th scope="col" class="table-danger">Budget</th>
                                 <th scope="col" class="table-danger">Variance</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for fait in faits %}
-                                {% if not (faits is empty) %}
                             {# On boucle sur les lignes des faits #}
                             
 
@@ -76,16 +78,12 @@
                                         <a href="{{ path('app_budget_supprimer_ligne', {'id':fait.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?');" class="btn btn-outline-danger rounded-pill"><i class="fa fa-solid fa-minus"></i></a>                                             
                                     </td>
                                 </tr>
-                            {% else %}
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td> Il n'y a aucune ligne dans votre grille budgétaire. </td>
-                                </tr>
-                                {% endif %}
-                                </br>
-                            {% endfor %}
                         </tbody>
                     </table>
+                    {% else %}
+                        Il n'y a aucune ligne dans votre grille budgétaire. 
+                    {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>

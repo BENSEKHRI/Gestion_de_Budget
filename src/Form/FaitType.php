@@ -8,9 +8,9 @@ use App\Repository\GeographieRepository;
 use App\Entity\Canal;
 use App\Entity\Produit;
 use App\Repository\ProduitRepository;
-use App\Entity\Temps;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -59,12 +59,11 @@ class FaitType extends AbstractType
             ])  
             ->add('actual')
             ->add('budget')
-            ->add('date', EntityType::class, [
-                'class' => Temps::class,
-                'choice_label' => 'date',
-                'required' => false
-            ])
-        ;
+            ->add('date', DateType::class, [
+                'widget'      => 'single_text',
+                'input'       => 'datetime',
+                'years'       => range(date('Y'), date('Y') - 30, -1)            ]
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver): void

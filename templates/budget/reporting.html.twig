@@ -20,42 +20,29 @@
     <div class="row g-4">
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
-                <h3 class="mb-4 text-center text-uppercase">Reporting</h3>
-                <div class="table-responsive ">
-                    <table class="table table-bordered">
+                <h3 class="mb-4 text-center text-uppercase">Rapport général</h3>
+                <div class="table-responsive col-8 mx-auto">
+                {# On boucle sur les lignes du fait #}
+                {% for fait in faits %}
+                    {% if not (faits is empty) %}
+                    <table class="table table-bordered text-center">
                         <thead>
                             <tr>
-                                <th scope="col">Géographie</th>
-                                <th scope="col">Canal</th>
-                                <th scope="col">Produit</th>
-                                <th scope="col">Actuel</th>
-                                <th scope="col">fait</th>
-                                <th scope="col">Mois</th>
-                                <th scope="col">Actions</th>
+                                <th class="col-4">Géographie</th>
+                                <th class="col-4">Canal</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {# On boucle sur les lignes du fait #}
-                            
-                            {% for fait in faits %}
-                                {% if not (faits is empty) %}
-                                <tr>
-                                    <td>{{ fait.geographie|capitalize}}</td>
-                                    <td>{{ fait.canal|capitalize }}</td>
-                                    <td>{{ fait.produit|capitalize }}</td>
-                                    <td>{{ fait.actual }}</td>
-                                    <td>{{ fait.budget }}</td>
-                                    <td>{{ fait.date }}</td>
-                                </tr>
-                                {% else %}
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td> Il n'y a aucune ligne dans votre grille budgétaire. </td>
-                                </tr>
-                                {% endif %}
-                            {% endfor %}
+                            <tr>
+                                <td class="col-4">{{ fait.geographie.getPays()|capitalize}}</td>
+                                <td class="col-4">{{ fait.canal.getTypeCanal()|capitalize }}</td>
+                            </tr>
                         </tbody>
                     </table>
+                    {% else %}
+                        <p>Il n'y a aucune ligne dans votre grille budgétaire. </br></p>
+                    {% endif %}
+                {% endfor %}
                 </div>
             </div>
         </div>

@@ -8,7 +8,6 @@ use App\Entity\FaitSearch;
 use App\Entity\Canal;
 use App\Entity\Geographie;
 use App\Entity\Produit;
-use App\Entity\Temps;
 use App\Form\FaitType;
 use App\Form\FaitSearchType;
 use App\Repository\FaitRepository;

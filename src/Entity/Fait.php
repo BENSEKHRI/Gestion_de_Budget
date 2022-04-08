@@ -24,14 +24,14 @@ class Fait
     #[ORM\ManyToOne(targetEntity: Canal::class, inversedBy: 'faits')]
     private $canal;
 
-    #[ORM\ManyToOne(targetEntity: Temps::class, inversedBy: 'faits')]
-    private $date;
-
     #[ORM\ManyToOne(targetEntity: Produit::class, inversedBy: 'faits')]
     private $produit;
 
     #[ORM\ManyToOne(targetEntity: Geographie::class, inversedBy: 'faits')]
     private $geographie;
+
+    #[ORM\Column(type: 'date')]
+    private $date;
 
     public function getId(): ?int
     {
@@ -74,18 +74,6 @@ class Fait
         return $this;
     }
 
-    public function getDate(): ?Temps
-    {
-        return $this->date;
-    }
-
-    public function setDate(?Temps $date): self
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
     public function getProduit(): ?Produit
     {
         return $this->produit;
@@ -106,6 +94,18 @@ class Fait
     public function setGeographie(?Geographie $geographie): self
     {
         $this->geographie = $geographie;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }

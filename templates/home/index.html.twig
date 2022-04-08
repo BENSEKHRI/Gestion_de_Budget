@@ -18,15 +18,69 @@
 
 <body>
     {{ include('_navbar.html.twig') }}
+    
+    <style>
+    .carousel {
+        min-width: 100%;
+        height: 420px;
+   }
+    </style>
+
+    <div class="container-fluid pt-0 px-3">
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="bg-light rounded h-100 p-4">
+
+
+
+                    <div class="mb-3">
+                        <h1 class="text-center text-primary">BudgIX</h1>
+                    </div>
+
+
+
+                    <div id="carouselExampleDark" class="carousel carousel-dark slide " data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner rounded ">
+                        <div class="carousel-item active carousel" data-bs-interval="4000">
+                        <img src="img/5.jpg" class="d-block w-100" alt="slide-1">
+                        </div>
+                        <div class="carousel-item carousel" data-bs-interval="4000">
+                        <img src="img/2.jpg" class="d-block w-100" alt="slide-2">
+                        </div>
+                        <div class="carousel-item carousel" data-bs-interval="4000">
+                        <img src="img/3.jpg" class="d-block w-100" alt="slide-3">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Footer Start -->
         <div class="container-fluid pt-3 px-3">
-            <div class="bg-light rounded-top p-4">
+            <div class="bg-light rounded-top p-2">
                 <div class="row">
                     <div class="col-12 col-sm-6 text-center text-sm-start">
                         &copy; <a href="{{ path('app_home') }}">BudgIX</a>, Tous droits réservés. 
-                    </div>
+                    </div>              
                     <div class="col-12 col-sm-6 text-center text-sm-end">
                         <p> Conçu par GooglePleX IT</p>     
                     </div>

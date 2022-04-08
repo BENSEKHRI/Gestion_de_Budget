@@ -20,46 +20,54 @@
     <div class="row g-4">
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
-                <div class="mb-2">
+                <div class="mb-3">
                     <h3 class="text-center text-uppercase">Saisie Budgétaire</h3>
-                    <a href="{{ path('app_budget_nouvelle_ligne')}}" class="btn btn-outline-success rounded-pill"><i class="fa fa-solid fa-plus"></i></a> 
                 </div>
 
-                <div class="table-responsive ">
-                    {{ form_start(faitForm) }}
+                <div class="table-responsive col-4 mx-auto">
+                    {{form_start(faitForm)}}
                     <table class="table table-bordered">
-                        <thead>
                             <tr>
-                                <th>Geography</th>
-                                <th>Channel</th>
+                                <td class="text-center align-middle">Géographie</td>
+                                <td>{{ form_widget(faitForm.geographie) }}</td>
+                                <td class ="align-middle"rowspan="3"><button type="submit" class="btn btn-outline-warning rounded-pill"><i class="bi bi-search"></i></button></td>
                             </tr>
                             <tr>
-                                <td>{{ form_widget(faitForm.geographie) }}</td>
-                                
+                                <td class="text-center align-middle">Canal</td>
                                 <td>{{ form_widget(faitForm.canal) }}</td>
                             </tr>
+                            
+                    </table>
+                </div>
+
+                <div class="table-responsive">
+                    <a href="{{ path('app_budget_nouvelle_ligne')}}" class="my-2 btn btn-outline-success rounded-pill"><i class="fa fa-solid fa-plus"></i></a> 
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="table">
+                                <th scope="col" colspan="2"rowspan="2"></th>
+                                <th scope="col" colspan="3" class="table-danger text-center">{{ form_widget(faitForm.date) }}</th>
+                                
+                            </tr>
+
                             <tr class= "table">
-                                <th scope="col"></th>
-                                <th scope="col"></th>
                                 <th scope="col" class="table-danger">Actual</th>
                                 <th scope="col" class="table-danger">Budget</th>
-                                <th scope="col" class="table-danger">Variance</th>
+                                <th scope="col" class="table-danger">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {# On boucle sur les lignes des faits #}
-                            
+                            <tr>
+                                <th class="table-danger">{{ form_widget(faitForm.produit) }}</th>
+                                <th class="table-danger">Price</th>
+                                <td class="table-warning">{{ form_widget(faitForm.actual) }}</td>
+                                <td class="table-success">{{ form_widget(faitForm.budget) }}</td>
 
-                                <tr>
-                                    <th class="table-danger">{{ form_widget(faitForm.produit) }}</th>
-                                    <th class="table-danger">Price</th>
-                                    <td>{{ form_widget(faitForm.actual) }}</td>
-                                    <td>{{ form_widget(faitForm.budget) }}</td>
-
-                                    <td> 
-                                        <button type="submit" class="btn btn-outline-success rounded-pill"><i class="fa fa-solid fa-check"></i></button>
-                                    </td>
-                                </tr>
+                                <td> 
+                                    <button type="submit" class="btn btn-outline-success rounded-pill"><i class="fa fa-solid fa-check"></i></button>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     {{ form_end(faitForm) }}

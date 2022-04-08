@@ -16,26 +16,40 @@
 <body>
 <!-- Table Start -->
 {{ include('_navbar.html.twig') }}
-<div class="container-fluid pt-0 px-3">
-    <div class="widget g-4">
+<div class="container-fluid pt-1 px-2">
+    <div class="row">
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
-                <h3 class="mb-4 text-center text-uppercase">Saisie Budgétaire</h3>
-                <div class="table-responsive ">
+                <div class="mb-3">
+                    <h3 class="text-center text-uppercase">Saisie Budgétaire</h3>
+                </div>
+
+                <div class="table">
+
                     <table class="table table-bordered">
+                        {{ form_start(faitForm) }}
                         <thead>
-                            <tr>
+                            <tr class="table">
+                                <th scope="col" colspan="3"rowspan="2"></th>
+                                <th scope="col" colspan="2" class="text-center">Mois</th>
+                                
+                            </tr>
+                            <tr class="table">
+                            
+                                <th scope="col" colspan="2" class="text-center">{{ form_widget(faitForm.date) }}</th>
+                                
+                            </tr>
+
+                            <tr class= "table text-center">
                                 <th scope="col">Géographie</th>
                                 <th scope="col">Canal</th>
                                 <th scope="col">Produit</th>
                                 <th scope="col">Actuel</th>
                                 <th scope="col">Budget</th>
-                                <th scope="col">Mois</th>
                                 <th scope="col">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                        {{ form_start(faitForm) }}
                             
                             <tr>
                                 <td> {{ form_widget(faitForm.geographie) }}</td>
@@ -43,14 +57,12 @@
                                 <td> {{ form_widget(faitForm.produit) }}</td>
                                 <td> {{ form_widget(faitForm.actual) }}</td>
                                 <td> {{ form_widget(faitForm.budget) }}</td>
-                                <td> {{ form_widget(faitForm.date) }}</td>
                                 <td> 
                                     <button type="submit" class="btn btn-outline-info rounded-pill"><i class="fa fa-solid fa-check"></i></button>
                                 </td>
                             </tr>
-                        {{ form_end(faitForm) }}
-
                         </tbody>
+                        {{ form_end(faitForm) }}
                     </table>
                 </div>
             </div>

@@ -121,48 +121,65 @@ class __TwigTemplate_6f3fee5e7cae12120c5793fdad8dcf7a extends Template
         // line 32
         echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 32, $this->source); })()), "geographie", [], "any", false, false, false, 32), 'widget');
         echo "</td>
-                                <td class =\"align-middle\"><button type=\"submit\" class=\"btn btn-outline-warning rounded-pill\"><i class=\"bi bi-search\"></i></button></td>
-
+                                ";
+        // line 33
+        if (twig_in_filter("ROLE_ADMIN", twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 33, $this->source); })()), "user", [], "any", false, false, false, 33), "roles", [], "any", false, false, false, 33))) {
+            // line 34
+            echo "                                    <td class =\"align-middle\"><button type=\"submit\" class=\"btn btn-outline-warning rounded-pill\"><i class=\"bi bi-search\"></i></button></td>
+                                ";
+        } else {
+            // line 36
+            echo "                                    <td class =\"align-middle\" rowspan=\"2\"><button type=\"submit\" class=\"btn btn-outline-warning rounded-pill\"><i class=\"bi bi-search\"></i></button></td>
+                                ";
+        }
+        // line 38
+        echo "
                             </tr>
                             <tr>
                                 <th class=\"text-center align-middle text-dark\">Canal</th>
                                 <td>";
-        // line 38
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 38, $this->source); })()), "canal", [], "any", false, false, false, 38), 'widget');
+        // line 42
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 42, $this->source); })()), "canal", [], "any", false, false, false, 42), 'widget');
         echo "</td>
-                                <td><a href=\"";
-        // line 39
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_budget_nouvelle_ligne");
-        echo "\" class=\"btn btn-outline-success rounded-pill\"><i class=\"fa fa-solid fa-plus\"></i></a></td>
-                            </tr>
+                                ";
+        // line 43
+        if (twig_in_filter("ROLE_ADMIN", twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 43, $this->source); })()), "user", [], "any", false, false, false, 43), "roles", [], "any", false, false, false, 43))) {
+            // line 44
+            echo "                                    <td><a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_budget_nouvelle_ligne");
+            echo "\" class=\"btn btn-outline-success rounded-pill\"><i class=\"fa fa-solid fa-plus\"></i></a></td>
+                                ";
+        }
+        // line 46
+        echo "                            </tr>
                             
                         ";
-        // line 42
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 42, $this->source); })()), 'form_end');
+        // line 48
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 48, $this->source); })()), 'form_end');
         echo "
                     </table>
                 </div>
 
                 <div class=\"table-responsive align-middle text-center\">
                     ";
-        // line 47
-        if ( !twig_test_empty((isset($context["faits"]) || array_key_exists("faits", $context) ? $context["faits"] : (function () { throw new RuntimeError('Variable "faits" does not exist.', 47, $this->source); })()))) {
-            // line 48
+        // line 53
+        if ( !twig_test_empty((isset($context["faits"]) || array_key_exists("faits", $context) ? $context["faits"] : (function () { throw new RuntimeError('Variable "faits" does not exist.', 53, $this->source); })()))) {
+            // line 54
             echo "                        <table class=\"table table-bordered\">
                             <thead>
                                 <tr class=\"table text-center align-middle\">
                                     <th scope=\"col\" colspan=\"2\"rowspan=\"2\"></th>
                                     <th scope=\"col\" colspan=\"3\" class=\"table-danger text-center\">";
-            // line 52
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["mois"]) || array_key_exists("mois", $context) ? $context["mois"] : (function () { throw new RuntimeError('Variable "mois" does not exist.', 52, $this->source); })()), 0, [], "array", false, false, false, 52), "date", [], "any", false, false, false, 52), "M/Y"), "html", null, true);
+            // line 58
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["mois"]) || array_key_exists("mois", $context) ? $context["mois"] : (function () { throw new RuntimeError('Variable "mois" does not exist.', 58, $this->source); })()), 0, [], "array", false, false, false, 58), "date", [], "any", false, false, false, 58), "M/Y"), "html", null, true);
             echo "</th>
                                     <th scope=\"col\" colspan=\"3\" class=\"table-danger text-center\">";
-            // line 53
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["mois"]) || array_key_exists("mois", $context) ? $context["mois"] : (function () { throw new RuntimeError('Variable "mois" does not exist.', 53, $this->source); })()), 0, [], "array", false, false, false, 53), "date1", [], "any", false, false, false, 53), "M/Y"), "html", null, true);
+            // line 59
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["mois"]) || array_key_exists("mois", $context) ? $context["mois"] : (function () { throw new RuntimeError('Variable "mois" does not exist.', 59, $this->source); })()), 0, [], "array", false, false, false, 59), "date1", [], "any", false, false, false, 59), "M/Y"), "html", null, true);
             echo "</th>
                                     <th scope=\"col\" colspan=\"3\" class=\"table-danger text-center\">";
-            // line 54
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["mois"]) || array_key_exists("mois", $context) ? $context["mois"] : (function () { throw new RuntimeError('Variable "mois" does not exist.', 54, $this->source); })()), 0, [], "array", false, false, false, 54), "date2", [], "any", false, false, false, 54), "M/Y"), "html", null, true);
+            // line 60
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["mois"]) || array_key_exists("mois", $context) ? $context["mois"] : (function () { throw new RuntimeError('Variable "mois" does not exist.', 60, $this->source); })()), 0, [], "array", false, false, false, 60), "date2", [], "any", false, false, false, 60), "M/Y"), "html", null, true);
             echo "</th>
                                     <th scope=\"col\" colspan=\"1\"rowspan=\"2\">ACTION</th>
                                 </tr>
@@ -181,79 +198,79 @@ class __TwigTemplate_6f3fee5e7cae12120c5793fdad8dcf7a extends Template
                             </thead>
                             <tbody class=\"text-center align-middle\">
                                 ";
-            // line 72
+            // line 78
             echo "
                                 ";
-            // line 73
+            // line 79
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["faits"]) || array_key_exists("faits", $context) ? $context["faits"] : (function () { throw new RuntimeError('Variable "faits" does not exist.', 73, $this->source); })()));
+            $context['_seq'] = twig_ensure_traversable((isset($context["faits"]) || array_key_exists("faits", $context) ? $context["faits"] : (function () { throw new RuntimeError('Variable "faits" does not exist.', 79, $this->source); })()));
             foreach ($context['_seq'] as $context["_key"] => $context["fait"]) {
-                // line 74
+                // line 80
                 echo "                                    ";
-                if ( !twig_test_empty((isset($context["faits"]) || array_key_exists("faits", $context) ? $context["faits"] : (function () { throw new RuntimeError('Variable "faits" does not exist.', 74, $this->source); })()))) {
-                    // line 75
+                if ( !twig_test_empty((isset($context["faits"]) || array_key_exists("faits", $context) ? $context["faits"] : (function () { throw new RuntimeError('Variable "faits" does not exist.', 80, $this->source); })()))) {
+                    // line 81
                     echo "                                    <tr>
                                         <th scope=\"row\" rowspan=\"3\" class=\"table-danger\">";
-                    // line 76
-                    echo twig_escape_filter($this->env, twig_capitalize_string_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["fait"], "produit", [], "any", false, false, false, 76), "getNomProduit", [], "method", false, false, false, 76)), "html", null, true);
+                    // line 82
+                    echo twig_escape_filter($this->env, twig_capitalize_string_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["fait"], "produit", [], "any", false, false, false, 82), "getNomProduit", [], "method", false, false, false, 82)), "html", null, true);
                     echo "</th>
                                         <th scope=\"row\" class=\"table-danger\">Price </th>
                                         <td class=\"table-info\">";
-                    // line 78
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "actual", [], "any", false, false, false, 78), "html", null, true);
+                    // line 84
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "actual", [], "any", false, false, false, 84), "html", null, true);
                     echo " </td>
                                         <td class=\"table-warning\">";
-                    // line 79
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "budget", [], "any", false, false, false, 79), "html", null, true);
+                    // line 85
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "budget", [], "any", false, false, false, 85), "html", null, true);
                     echo " </td>
                                         ";
-                    // line 80
-                    $context["variance"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "actual", [], "any", false, false, false, 80) - twig_get_attribute($this->env, $this->source, $context["fait"], "budget", [], "any", false, false, false, 80));
-                    // line 81
+                    // line 86
+                    $context["variance"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "actual", [], "any", false, false, false, 86) - twig_get_attribute($this->env, $this->source, $context["fait"], "budget", [], "any", false, false, false, 86));
+                    // line 87
                     echo "                                        <td class=\"table-success\">";
-                    echo twig_escape_filter($this->env, (isset($context["variance"]) || array_key_exists("variance", $context) ? $context["variance"] : (function () { throw new RuntimeError('Variable "variance" does not exist.', 81, $this->source); })()), "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["variance"]) || array_key_exists("variance", $context) ? $context["variance"] : (function () { throw new RuntimeError('Variable "variance" does not exist.', 87, $this->source); })()), "html", null, true);
                     echo " </td>
                                         
                                         <td class=\"table-info\">";
-                    // line 83
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "actual1", [], "any", false, false, false, 83), "html", null, true);
+                    // line 89
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "actual1", [], "any", false, false, false, 89), "html", null, true);
                     echo " </td>
                                         <td class=\"table-warning\">";
-                    // line 84
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "budget1", [], "any", false, false, false, 84), "html", null, true);
+                    // line 90
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "budget1", [], "any", false, false, false, 90), "html", null, true);
                     echo " </td>
                                         ";
-                    // line 85
-                    $context["variance"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "actual1", [], "any", false, false, false, 85) - twig_get_attribute($this->env, $this->source, $context["fait"], "budget1", [], "any", false, false, false, 85));
-                    // line 86
+                    // line 91
+                    $context["variance"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "actual1", [], "any", false, false, false, 91) - twig_get_attribute($this->env, $this->source, $context["fait"], "budget1", [], "any", false, false, false, 91));
+                    // line 92
                     echo "                                        <td class=\"table-success\">";
-                    echo twig_escape_filter($this->env, (isset($context["variance"]) || array_key_exists("variance", $context) ? $context["variance"] : (function () { throw new RuntimeError('Variable "variance" does not exist.', 86, $this->source); })()), "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["variance"]) || array_key_exists("variance", $context) ? $context["variance"] : (function () { throw new RuntimeError('Variable "variance" does not exist.', 92, $this->source); })()), "html", null, true);
                     echo " </td>
 
                                         <td class=\"table-info\">";
-                    // line 88
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "actual2", [], "any", false, false, false, 88), "html", null, true);
+                    // line 94
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "actual2", [], "any", false, false, false, 94), "html", null, true);
                     echo " </td>
                                         <td class=\"table-warning\">";
-                    // line 89
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "budget2", [], "any", false, false, false, 89), "html", null, true);
+                    // line 95
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "budget2", [], "any", false, false, false, 95), "html", null, true);
                     echo " </td>
                                         ";
-                    // line 90
-                    $context["variance"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "actual2", [], "any", false, false, false, 90) - twig_get_attribute($this->env, $this->source, $context["fait"], "budget2", [], "any", false, false, false, 90));
-                    // line 91
+                    // line 96
+                    $context["variance"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "actual2", [], "any", false, false, false, 96) - twig_get_attribute($this->env, $this->source, $context["fait"], "budget2", [], "any", false, false, false, 96));
+                    // line 97
                     echo "                                        <td class=\"table-success\">";
-                    echo twig_escape_filter($this->env, (isset($context["variance"]) || array_key_exists("variance", $context) ? $context["variance"] : (function () { throw new RuntimeError('Variable "variance" does not exist.', 91, $this->source); })()), "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["variance"]) || array_key_exists("variance", $context) ? $context["variance"] : (function () { throw new RuntimeError('Variable "variance" does not exist.', 97, $this->source); })()), "html", null, true);
                     echo " </td>
 
                                         <td rowspan=\"3\"> 
                                             <a href=\"";
-                    // line 94
-                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_budget_modifier_ligne", ["id" => twig_get_attribute($this->env, $this->source, $context["fait"], "id", [], "any", false, false, false, 94)]), "html", null, true);
+                    // line 100
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_budget_modifier_ligne", ["id" => twig_get_attribute($this->env, $this->source, $context["fait"], "id", [], "any", false, false, false, 100)]), "html", null, true);
                     echo "\" class=\"btn btn-sm btn-sm-square btn-outline-primary\"><i class=\"fa fa-solid fa-wrench\"></i></a> 
                                             <a href=\"";
-                    // line 95
-                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_budget_supprimer_ligne", ["id" => twig_get_attribute($this->env, $this->source, $context["fait"], "id", [], "any", false, false, false, 95)]), "html", null, true);
+                    // line 101
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_budget_supprimer_ligne", ["id" => twig_get_attribute($this->env, $this->source, $context["fait"], "id", [], "any", false, false, false, 101)]), "html", null, true);
                     echo "\" onclick=\"return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?');\" class=\"btn btn-sm btn-sm-square btn-outline-danger\"><i class=\"fa fa-solid fa-minus\"></i></a>                                             
                                         </td>
                                     </tr>
@@ -261,144 +278,144 @@ class __TwigTemplate_6f3fee5e7cae12120c5793fdad8dcf7a extends Template
                                     <tr>
                                         <th scope=\"row\" class=\"table-danger\">Volume</th>
                                         <td class=\"table-info\">";
-                    // line 101
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "actualVol", [], "any", false, false, false, 101), "html", null, true);
+                    // line 107
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "actualVol", [], "any", false, false, false, 107), "html", null, true);
                     echo " </td>
                                         <td class=\"table-warning\">";
-                    // line 102
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "budgetVol", [], "any", false, false, false, 102), "html", null, true);
+                    // line 108
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "budgetVol", [], "any", false, false, false, 108), "html", null, true);
                     echo " </td>
                                         ";
-                    // line 103
-                    $context["variance"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "actualVol", [], "any", false, false, false, 103) - twig_get_attribute($this->env, $this->source, $context["fait"], "budgetVol", [], "any", false, false, false, 103));
-                    // line 104
+                    // line 109
+                    $context["variance"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "actualVol", [], "any", false, false, false, 109) - twig_get_attribute($this->env, $this->source, $context["fait"], "budgetVol", [], "any", false, false, false, 109));
+                    // line 110
                     echo "                                        <td class=\"table-success\">";
-                    echo twig_escape_filter($this->env, (isset($context["variance"]) || array_key_exists("variance", $context) ? $context["variance"] : (function () { throw new RuntimeError('Variable "variance" does not exist.', 104, $this->source); })()), "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["variance"]) || array_key_exists("variance", $context) ? $context["variance"] : (function () { throw new RuntimeError('Variable "variance" does not exist.', 110, $this->source); })()), "html", null, true);
                     echo " </td>
                                         
                                         <td class=\"table-info\">";
-                    // line 106
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "actualVol1", [], "any", false, false, false, 106), "html", null, true);
+                    // line 112
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "actualVol1", [], "any", false, false, false, 112), "html", null, true);
                     echo " </td>
                                         <td class=\"table-warning\">";
-                    // line 107
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "budgetVol1", [], "any", false, false, false, 107), "html", null, true);
+                    // line 113
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "budgetVol1", [], "any", false, false, false, 113), "html", null, true);
                     echo " </td>
                                         ";
-                    // line 108
-                    $context["variance"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "actualVol1", [], "any", false, false, false, 108) - twig_get_attribute($this->env, $this->source, $context["fait"], "budgetVol1", [], "any", false, false, false, 108));
-                    // line 109
+                    // line 114
+                    $context["variance"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "actualVol1", [], "any", false, false, false, 114) - twig_get_attribute($this->env, $this->source, $context["fait"], "budgetVol1", [], "any", false, false, false, 114));
+                    // line 115
                     echo "                                        <td class=\"table-success\">";
-                    echo twig_escape_filter($this->env, (isset($context["variance"]) || array_key_exists("variance", $context) ? $context["variance"] : (function () { throw new RuntimeError('Variable "variance" does not exist.', 109, $this->source); })()), "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["variance"]) || array_key_exists("variance", $context) ? $context["variance"] : (function () { throw new RuntimeError('Variable "variance" does not exist.', 115, $this->source); })()), "html", null, true);
                     echo " </td>
 
                                         <td class=\"table-info\">";
-                    // line 111
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "actualVol2", [], "any", false, false, false, 111), "html", null, true);
+                    // line 117
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "actualVol2", [], "any", false, false, false, 117), "html", null, true);
                     echo " </td>
                                         <td class=\"table-warning\">";
-                    // line 112
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "budgetVol2", [], "any", false, false, false, 112), "html", null, true);
+                    // line 118
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["fait"], "budgetVol2", [], "any", false, false, false, 118), "html", null, true);
                     echo " </td>
                                         ";
-                    // line 113
-                    $context["variance"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "actualVol2", [], "any", false, false, false, 113) - twig_get_attribute($this->env, $this->source, $context["fait"], "budgetVol2", [], "any", false, false, false, 113));
-                    // line 114
+                    // line 119
+                    $context["variance"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "actualVol2", [], "any", false, false, false, 119) - twig_get_attribute($this->env, $this->source, $context["fait"], "budgetVol2", [], "any", false, false, false, 119));
+                    // line 120
                     echo "                                        <td class=\"table-success\">";
-                    echo twig_escape_filter($this->env, (isset($context["variance"]) || array_key_exists("variance", $context) ? $context["variance"] : (function () { throw new RuntimeError('Variable "variance" does not exist.', 114, $this->source); })()), "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["variance"]) || array_key_exists("variance", $context) ? $context["variance"] : (function () { throw new RuntimeError('Variable "variance" does not exist.', 120, $this->source); })()), "html", null, true);
                     echo " </td>
                                     </tr>
 
                                     <tr>
                                         <th scope=\"row\" class=\"table-danger\">Revenue </th>
                                         ";
-                    // line 119
-                    $context["revenue1"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "actual", [], "any", false, false, false, 119) * twig_get_attribute($this->env, $this->source, $context["fait"], "actualVol", [], "any", false, false, false, 119));
-                    // line 120
+                    // line 125
+                    $context["revenue1"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "actual", [], "any", false, false, false, 125) * twig_get_attribute($this->env, $this->source, $context["fait"], "actualVol", [], "any", false, false, false, 125));
+                    // line 126
                     echo "                                        <td class=\"table-success\">";
-                    echo twig_escape_filter($this->env, (isset($context["revenue1"]) || array_key_exists("revenue1", $context) ? $context["revenue1"] : (function () { throw new RuntimeError('Variable "revenue1" does not exist.', 120, $this->source); })()), "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["revenue1"]) || array_key_exists("revenue1", $context) ? $context["revenue1"] : (function () { throw new RuntimeError('Variable "revenue1" does not exist.', 126, $this->source); })()), "html", null, true);
                     echo " </td>
                                         ";
-                    // line 121
-                    $context["revenue2"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "budget", [], "any", false, false, false, 121) * twig_get_attribute($this->env, $this->source, $context["fait"], "budgetVol", [], "any", false, false, false, 121));
-                    // line 122
+                    // line 127
+                    $context["revenue2"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "budget", [], "any", false, false, false, 127) * twig_get_attribute($this->env, $this->source, $context["fait"], "budgetVol", [], "any", false, false, false, 127));
+                    // line 128
                     echo "                                        <td class=\"table-success\">";
-                    echo twig_escape_filter($this->env, (isset($context["revenue2"]) || array_key_exists("revenue2", $context) ? $context["revenue2"] : (function () { throw new RuntimeError('Variable "revenue2" does not exist.', 122, $this->source); })()), "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["revenue2"]) || array_key_exists("revenue2", $context) ? $context["revenue2"] : (function () { throw new RuntimeError('Variable "revenue2" does not exist.', 128, $this->source); })()), "html", null, true);
                     echo " </td>
                                         ";
-                    // line 123
-                    $context["revenue"] = ((isset($context["revenue1"]) || array_key_exists("revenue1", $context) ? $context["revenue1"] : (function () { throw new RuntimeError('Variable "revenue1" does not exist.', 123, $this->source); })()) - (isset($context["revenue2"]) || array_key_exists("revenue2", $context) ? $context["revenue2"] : (function () { throw new RuntimeError('Variable "revenue2" does not exist.', 123, $this->source); })()));
-                    // line 124
+                    // line 129
+                    $context["revenue"] = ((isset($context["revenue1"]) || array_key_exists("revenue1", $context) ? $context["revenue1"] : (function () { throw new RuntimeError('Variable "revenue1" does not exist.', 129, $this->source); })()) - (isset($context["revenue2"]) || array_key_exists("revenue2", $context) ? $context["revenue2"] : (function () { throw new RuntimeError('Variable "revenue2" does not exist.', 129, $this->source); })()));
+                    // line 130
                     echo "                                        <td class=\"table-success\">";
-                    echo twig_escape_filter($this->env, (isset($context["revenue"]) || array_key_exists("revenue", $context) ? $context["revenue"] : (function () { throw new RuntimeError('Variable "revenue" does not exist.', 124, $this->source); })()), "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["revenue"]) || array_key_exists("revenue", $context) ? $context["revenue"] : (function () { throw new RuntimeError('Variable "revenue" does not exist.', 130, $this->source); })()), "html", null, true);
                     echo " </td>
                                         
                                         ";
-                    // line 126
-                    $context["revenue1"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "actual1", [], "any", false, false, false, 126) * twig_get_attribute($this->env, $this->source, $context["fait"], "actualVol1", [], "any", false, false, false, 126));
-                    // line 127
+                    // line 132
+                    $context["revenue1"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "actual1", [], "any", false, false, false, 132) * twig_get_attribute($this->env, $this->source, $context["fait"], "actualVol1", [], "any", false, false, false, 132));
+                    // line 133
                     echo "                                        <td class=\"table-success\">";
-                    echo twig_escape_filter($this->env, (isset($context["revenue1"]) || array_key_exists("revenue1", $context) ? $context["revenue1"] : (function () { throw new RuntimeError('Variable "revenue1" does not exist.', 127, $this->source); })()), "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["revenue1"]) || array_key_exists("revenue1", $context) ? $context["revenue1"] : (function () { throw new RuntimeError('Variable "revenue1" does not exist.', 133, $this->source); })()), "html", null, true);
                     echo " </td>
                                         ";
-                    // line 128
-                    $context["revenue2"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "budget1", [], "any", false, false, false, 128) * twig_get_attribute($this->env, $this->source, $context["fait"], "budgetVol1", [], "any", false, false, false, 128));
-                    // line 129
+                    // line 134
+                    $context["revenue2"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "budget1", [], "any", false, false, false, 134) * twig_get_attribute($this->env, $this->source, $context["fait"], "budgetVol1", [], "any", false, false, false, 134));
+                    // line 135
                     echo "                                        <td class=\"table-success\">";
-                    echo twig_escape_filter($this->env, (isset($context["revenue2"]) || array_key_exists("revenue2", $context) ? $context["revenue2"] : (function () { throw new RuntimeError('Variable "revenue2" does not exist.', 129, $this->source); })()), "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["revenue2"]) || array_key_exists("revenue2", $context) ? $context["revenue2"] : (function () { throw new RuntimeError('Variable "revenue2" does not exist.', 135, $this->source); })()), "html", null, true);
                     echo " </td>
                                         ";
-                    // line 130
-                    $context["revenue"] = ((isset($context["revenue1"]) || array_key_exists("revenue1", $context) ? $context["revenue1"] : (function () { throw new RuntimeError('Variable "revenue1" does not exist.', 130, $this->source); })()) - (isset($context["revenue2"]) || array_key_exists("revenue2", $context) ? $context["revenue2"] : (function () { throw new RuntimeError('Variable "revenue2" does not exist.', 130, $this->source); })()));
-                    // line 131
+                    // line 136
+                    $context["revenue"] = ((isset($context["revenue1"]) || array_key_exists("revenue1", $context) ? $context["revenue1"] : (function () { throw new RuntimeError('Variable "revenue1" does not exist.', 136, $this->source); })()) - (isset($context["revenue2"]) || array_key_exists("revenue2", $context) ? $context["revenue2"] : (function () { throw new RuntimeError('Variable "revenue2" does not exist.', 136, $this->source); })()));
+                    // line 137
                     echo "                                        <td class=\"table-success\">";
-                    echo twig_escape_filter($this->env, (isset($context["revenue"]) || array_key_exists("revenue", $context) ? $context["revenue"] : (function () { throw new RuntimeError('Variable "revenue" does not exist.', 131, $this->source); })()), "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["revenue"]) || array_key_exists("revenue", $context) ? $context["revenue"] : (function () { throw new RuntimeError('Variable "revenue" does not exist.', 137, $this->source); })()), "html", null, true);
                     echo " </td>
 
                                         ";
-                    // line 133
-                    $context["revenue1"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "actual2", [], "any", false, false, false, 133) * twig_get_attribute($this->env, $this->source, $context["fait"], "actualVol2", [], "any", false, false, false, 133));
-                    // line 134
+                    // line 139
+                    $context["revenue1"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "actual2", [], "any", false, false, false, 139) * twig_get_attribute($this->env, $this->source, $context["fait"], "actualVol2", [], "any", false, false, false, 139));
+                    // line 140
                     echo "                                        <td class=\"table-success\">";
-                    echo twig_escape_filter($this->env, (isset($context["revenue1"]) || array_key_exists("revenue1", $context) ? $context["revenue1"] : (function () { throw new RuntimeError('Variable "revenue1" does not exist.', 134, $this->source); })()), "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["revenue1"]) || array_key_exists("revenue1", $context) ? $context["revenue1"] : (function () { throw new RuntimeError('Variable "revenue1" does not exist.', 140, $this->source); })()), "html", null, true);
                     echo " </td>
                                         ";
-                    // line 135
-                    $context["revenue2"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "budget2", [], "any", false, false, false, 135) * twig_get_attribute($this->env, $this->source, $context["fait"], "budgetVol2", [], "any", false, false, false, 135));
-                    // line 136
+                    // line 141
+                    $context["revenue2"] = (twig_get_attribute($this->env, $this->source, $context["fait"], "budget2", [], "any", false, false, false, 141) * twig_get_attribute($this->env, $this->source, $context["fait"], "budgetVol2", [], "any", false, false, false, 141));
+                    // line 142
                     echo "                                        <td class=\"table-success\">";
-                    echo twig_escape_filter($this->env, (isset($context["revenue2"]) || array_key_exists("revenue2", $context) ? $context["revenue2"] : (function () { throw new RuntimeError('Variable "revenue2" does not exist.', 136, $this->source); })()), "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["revenue2"]) || array_key_exists("revenue2", $context) ? $context["revenue2"] : (function () { throw new RuntimeError('Variable "revenue2" does not exist.', 142, $this->source); })()), "html", null, true);
                     echo " </td>
                                         ";
-                    // line 137
-                    $context["revenue"] = ((isset($context["revenue1"]) || array_key_exists("revenue1", $context) ? $context["revenue1"] : (function () { throw new RuntimeError('Variable "revenue1" does not exist.', 137, $this->source); })()) - (isset($context["revenue2"]) || array_key_exists("revenue2", $context) ? $context["revenue2"] : (function () { throw new RuntimeError('Variable "revenue2" does not exist.', 137, $this->source); })()));
-                    // line 138
+                    // line 143
+                    $context["revenue"] = ((isset($context["revenue1"]) || array_key_exists("revenue1", $context) ? $context["revenue1"] : (function () { throw new RuntimeError('Variable "revenue1" does not exist.', 143, $this->source); })()) - (isset($context["revenue2"]) || array_key_exists("revenue2", $context) ? $context["revenue2"] : (function () { throw new RuntimeError('Variable "revenue2" does not exist.', 143, $this->source); })()));
+                    // line 144
                     echo "                                        <td class=\"table-success\">";
-                    echo twig_escape_filter($this->env, (isset($context["revenue"]) || array_key_exists("revenue", $context) ? $context["revenue"] : (function () { throw new RuntimeError('Variable "revenue" does not exist.', 138, $this->source); })()), "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["revenue"]) || array_key_exists("revenue", $context) ? $context["revenue"] : (function () { throw new RuntimeError('Variable "revenue" does not exist.', 144, $this->source); })()), "html", null, true);
                     echo " </td>
                                     </tr>
                                 ";
                 } else {
-                    // line 141
+                    // line 147
                     echo "                                    Il n'y a aucune ligne dans votre grille budgétaire. 
                                 ";
                 }
-                // line 143
+                // line 149
                 echo "                                ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['fait'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 144
+            // line 150
             echo "                            </tbody>
                         </table>
                     ";
         } else {
-            // line 147
+            // line 153
             echo "                        <p>Il n'y a aucune ligne budgétaire pour ce tri.</p> 
                     ";
         }
-        // line 149
+        // line 155
         echo "                </div>
             </div>
         </div>
@@ -427,7 +444,7 @@ class __TwigTemplate_6f3fee5e7cae12120c5793fdad8dcf7a extends Template
 
     public function getDebugInfo()
     {
-        return array (  402 => 149,  398 => 147,  393 => 144,  387 => 143,  383 => 141,  376 => 138,  374 => 137,  369 => 136,  367 => 135,  362 => 134,  360 => 133,  354 => 131,  352 => 130,  347 => 129,  345 => 128,  340 => 127,  338 => 126,  332 => 124,  330 => 123,  325 => 122,  323 => 121,  318 => 120,  316 => 119,  307 => 114,  305 => 113,  301 => 112,  297 => 111,  291 => 109,  289 => 108,  285 => 107,  281 => 106,  275 => 104,  273 => 103,  269 => 102,  265 => 101,  256 => 95,  252 => 94,  245 => 91,  243 => 90,  239 => 89,  235 => 88,  229 => 86,  227 => 85,  223 => 84,  219 => 83,  213 => 81,  211 => 80,  207 => 79,  203 => 78,  198 => 76,  195 => 75,  192 => 74,  188 => 73,  185 => 72,  165 => 54,  161 => 53,  157 => 52,  151 => 48,  149 => 47,  141 => 42,  135 => 39,  131 => 38,  122 => 32,  116 => 29,  102 => 18,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  419 => 155,  415 => 153,  410 => 150,  404 => 149,  400 => 147,  393 => 144,  391 => 143,  386 => 142,  384 => 141,  379 => 140,  377 => 139,  371 => 137,  369 => 136,  364 => 135,  362 => 134,  357 => 133,  355 => 132,  349 => 130,  347 => 129,  342 => 128,  340 => 127,  335 => 126,  333 => 125,  324 => 120,  322 => 119,  318 => 118,  314 => 117,  308 => 115,  306 => 114,  302 => 113,  298 => 112,  292 => 110,  290 => 109,  286 => 108,  282 => 107,  273 => 101,  269 => 100,  262 => 97,  260 => 96,  256 => 95,  252 => 94,  246 => 92,  244 => 91,  240 => 90,  236 => 89,  230 => 87,  228 => 86,  224 => 85,  220 => 84,  215 => 82,  212 => 81,  209 => 80,  205 => 79,  202 => 78,  182 => 60,  178 => 59,  174 => 58,  168 => 54,  166 => 53,  158 => 48,  154 => 46,  148 => 44,  146 => 43,  142 => 42,  136 => 38,  132 => 36,  128 => 34,  126 => 33,  122 => 32,  116 => 29,  102 => 18,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -464,13 +481,19 @@ class __TwigTemplate_6f3fee5e7cae12120c5793fdad8dcf7a extends Template
                             <tr>
                                 <th class=\"text-center align-middle text-dark\">Géographie</th>
                                 <td>{{ form_widget(form.geographie) }}</td>
-                                <td class =\"align-middle\"><button type=\"submit\" class=\"btn btn-outline-warning rounded-pill\"><i class=\"bi bi-search\"></i></button></td>
+                                {% if 'ROLE_ADMIN' in app.user.roles %}
+                                    <td class =\"align-middle\"><button type=\"submit\" class=\"btn btn-outline-warning rounded-pill\"><i class=\"bi bi-search\"></i></button></td>
+                                {% else %}
+                                    <td class =\"align-middle\" rowspan=\"2\"><button type=\"submit\" class=\"btn btn-outline-warning rounded-pill\"><i class=\"bi bi-search\"></i></button></td>
+                                {% endif %}
 
                             </tr>
                             <tr>
                                 <th class=\"text-center align-middle text-dark\">Canal</th>
                                 <td>{{ form_widget(form.canal) }}</td>
-                                <td><a href=\"{{ path('app_budget_nouvelle_ligne')}}\" class=\"btn btn-outline-success rounded-pill\"><i class=\"fa fa-solid fa-plus\"></i></a></td>
+                                {% if 'ROLE_ADMIN' in app.user.roles %}
+                                    <td><a href=\"{{ path('app_budget_nouvelle_ligne')}}\" class=\"btn btn-outline-success rounded-pill\"><i class=\"fa fa-solid fa-plus\"></i></a></td>
+                                {% endif %}
                             </tr>
                             
                         {{form_end(form)}}

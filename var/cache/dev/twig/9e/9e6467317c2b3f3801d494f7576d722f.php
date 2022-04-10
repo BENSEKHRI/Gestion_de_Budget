@@ -317,10 +317,7 @@ class __TwigTemplate_b99b9c1589714db0b897947f609da424 extends Template
         // line 135
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_admin_compte");
         echo "\" class=\"dropdown-item\">Compte</a>
-                        <a href=\"";
-        // line 136
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_reset_password");
-        echo "\" class=\"dropdown-item\"><i class=\"fa fa-solid fa-gear\"></i>Mot de passe</a>
+                        <a href=\"#\" class=\"dropdown-item\"><i class=\"fa fa-solid fa-gear\"></i>Mot de passe</a>
                         <hr class=\"dropdown-divider\">
                         <a href=\"";
         // line 138
@@ -353,7 +350,7 @@ class __TwigTemplate_b99b9c1589714db0b897947f609da424 extends Template
 
     public function getDebugInfo()
     {
-        return array (  327 => 138,  322 => 136,  318 => 135,  310 => 132,  305 => 129,  295 => 122,  289 => 119,  280 => 112,  278 => 111,  258 => 93,  252 => 91,  246 => 89,  244 => 88,  241 => 87,  238 => 86,  231 => 82,  226 => 80,  223 => 79,  216 => 75,  211 => 73,  208 => 72,  205 => 71,  202 => 70,  195 => 66,  191 => 65,  186 => 63,  183 => 62,  178 => 59,  173 => 57,  168 => 56,  166 => 55,  162 => 54,  157 => 53,  155 => 52,  149 => 49,  146 => 48,  143 => 47,  141 => 46,  138 => 45,  132 => 43,  126 => 41,  124 => 40,  120 => 38,  118 => 37,  117 => 36,  111 => 32,  107 => 30,  103 => 28,  101 => 27,  95 => 26,  83 => 17,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  324 => 138,  318 => 135,  310 => 132,  305 => 129,  295 => 122,  289 => 119,  280 => 112,  278 => 111,  258 => 93,  252 => 91,  246 => 89,  244 => 88,  241 => 87,  238 => 86,  231 => 82,  226 => 80,  223 => 79,  216 => 75,  211 => 73,  208 => 72,  205 => 71,  202 => 70,  195 => 66,  191 => 65,  186 => 63,  183 => 62,  178 => 59,  173 => 57,  168 => 56,  166 => 55,  162 => 54,  157 => 53,  155 => 52,  149 => 49,  146 => 48,  143 => 47,  141 => 46,  138 => 45,  132 => 43,  126 => 41,  124 => 40,  120 => 38,  118 => 37,  117 => 36,  111 => 32,  107 => 30,  103 => 28,  101 => 27,  95 => 26,  83 => 17,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -493,7 +490,7 @@ class __TwigTemplate_b99b9c1589714db0b897947f609da424 extends Template
                     </a>
                     <div class=\"dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0\">
                         <a href=\"{{ path('app_admin_compte') }}\" class=\"dropdown-item\">Compte</a>
-                        <a href=\"{{ path('app_reset_password') }}\" class=\"dropdown-item\"><i class=\"fa fa-solid fa-gear\"></i>Mot de passe</a>
+                        <a href=\"#\" class=\"dropdown-item\"><i class=\"fa fa-solid fa-gear\"></i>Mot de passe</a>
                         <hr class=\"dropdown-divider\">
                         <a href=\"{{ path('app_logout')}}\" class=\"dropdown-item\">Se déconnecter</a>
                     </div>

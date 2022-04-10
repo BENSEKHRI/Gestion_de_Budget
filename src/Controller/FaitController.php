@@ -118,6 +118,7 @@ class FaitController extends AbstractController
             return $this->redirectToRoute('app_budget_saisie_budgetaire');
         }
         return $this->render('budget/EditSaisieBudgetaire.html.twig', [
+            'fait' => $fait,
             'faitForm' => $form->createView(),
             'mois' => $mois->findAll(),
             'faits' => $faits->findAll(),

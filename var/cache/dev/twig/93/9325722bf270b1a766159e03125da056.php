@@ -116,8 +116,6 @@ class __TwigTemplate_4946ec477babc03c2defb581be8bff01 extends Template
             <div class=\"col-12\">
                 <div class=\"bg-light rounded h-100 p-4\">
 
-
-
                     <div class=\"mb-3\">
                         <h1 class=\"text-center text-primary\">BudgIX</h1>
                     </div>
@@ -157,7 +155,6 @@ class __TwigTemplate_4946ec477babc03c2defb581be8bff01 extends Template
 
 
 
-
     <div class=\"container-xxl position-relative bg-white d-flex p-0\">
         <!-- Footer Start -->
         <div class=\"container-fluid pt-3 px-3\">
@@ -165,7 +162,7 @@ class __TwigTemplate_4946ec477babc03c2defb581be8bff01 extends Template
                 <div class=\"row\">
                     <div class=\"col-12 col-sm-6 text-center text-sm-start\">
                         &copy; <a href=\"";
-        // line 82
+        // line 79
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home");
         echo "\">BudgIX</a>, Tous droits réservés. 
                     </div>              
@@ -207,7 +204,7 @@ class __TwigTemplate_4946ec477babc03c2defb581be8bff01 extends Template
 
     public function getDebugInfo()
     {
-        return array (  169 => 82,  104 => 20,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  166 => 79,  104 => 20,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -245,8 +242,6 @@ class __TwigTemplate_4946ec477babc03c2defb581be8bff01 extends Template
             <div class=\"col-12\">
                 <div class=\"bg-light rounded h-100 p-4\">
 
-
-
                     <div class=\"mb-3\">
                         <h1 class=\"text-center text-primary\">BudgIX</h1>
                     </div>
@@ -283,7 +278,6 @@ class __TwigTemplate_4946ec477babc03c2defb581be8bff01 extends Template
             </div>
         </div>
     </div>
-
 
 
 

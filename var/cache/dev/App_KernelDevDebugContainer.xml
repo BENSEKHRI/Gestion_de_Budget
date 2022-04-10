@@ -4295,6 +4295,14 @@
         <argument>!Debug</argument>
       </call>
       <call method="addPath">
+        <argument>/home/lounis/GP/Gestion_de_budget/templates/bundles/TwigBundle</argument>
+        <argument>Twig</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/lounis/GP/Gestion_de_budget/templates/bundles/TwigBundle</argument>
+        <argument>!Twig</argument>
+      </call>
+      <call method="addPath">
         <argument>/home/lounis/GP/Gestion_de_budget/vendor/symfony/security-bundle/Resources/views</argument>
         <argument>Security</argument>
       </call>

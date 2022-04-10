@@ -24,14 +24,42 @@ class Fait
     #[ORM\ManyToOne(targetEntity: Canal::class, inversedBy: 'faits')]
     private $canal;
 
-    #[ORM\ManyToOne(targetEntity: Produit::class, inversedBy: 'faits')]
-    private $produit;
-
     #[ORM\ManyToOne(targetEntity: Geographie::class, inversedBy: 'faits')]
     private $geographie;
 
-    #[ORM\Column(type: 'date')]
-    private $date;
+    #[ORM\Column(type: 'float', nullable: true)]
+    private $actual1;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    private $actual2;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    private $budget1;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    private $budget2;
+
+    #[ORM\ManyToOne(targetEntity: Produit::class, inversedBy: 'faits')]
+    private $produit;
+
+    #[ORM\Column(type: 'integer')]
+    private $actualVol;
+
+    #[ORM\Column(type: 'integer')]
+    private $budgetVol;
+    
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $actualVol1;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $budgetVol1;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $actualVol2;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $budgetVol2;
+
 
     public function getId(): ?int
     {
@@ -74,18 +102,6 @@ class Fait
         return $this;
     }
 
-    public function getProduit(): ?Produit
-    {
-        return $this->produit;
-    }
-
-    public function setProduit(?Produit $produit): self
-    {
-        $this->produit = $produit;
-
-        return $this;
-    }
-
     public function getGeographie(): ?Geographie
     {
         return $this->geographie;
@@ -98,15 +114,136 @@ class Fait
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getActual1(): ?float
     {
-        return $this->date;
+        return $this->actual1;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setActual1(?float $actual1): self
     {
-        $this->date = $date;
+        $this->actual1 = $actual1;
 
         return $this;
     }
+
+    public function getActual2(): ?float
+    {
+        return $this->actual2;
+    }
+
+    public function setActual2(?float $actual2): self
+    {
+        $this->actual2 = $actual2;
+
+        return $this;
+    }
+
+    public function getBudget1(): ?float
+    {
+        return $this->budget1;
+    }
+
+    public function setBudget1(?float $budget1): self
+    {
+        $this->budget1 = $budget1;
+
+        return $this;
+    }
+
+    public function getBudget2(): ?float
+    {
+        return $this->budget2;
+    }
+
+    public function setBudget2(?float $budget2): self
+    {
+        $this->budget2 = $budget2;
+
+        return $this;
+    }
+
+    public function getProduit(): ?Produit
+    {
+        return $this->produit;
+    }
+
+    public function setProduit(?Produit $produit): self
+    {
+        $this->produit = $produit;
+
+        return $this;
+    }
+    
+    public function getActualVol(): ?int
+    {
+        return $this->actualVol;
+    }
+
+    public function setActualVol(?int $actualVol): self
+    {
+        $this->actualVol = $actualVol;
+
+        return $this;
+    }
+
+    public function getBudgetVol(): ?int
+    {
+        return $this->budgetVol;
+    }
+
+    public function setBudgetVol(?int $budgetVol): self
+    {
+        $this->budgetVol = $budgetVol;
+
+        return $this;
+    }
+    
+    public function getActualVol1(): ?int
+    {
+        return $this->actualVol1;
+    }
+
+    public function setActualVol1(int $actualVol1): self
+    {
+        $this->actualVol1 = $actualVol1;
+
+        return $this;
+    }
+
+    public function getBudgetVol1(): ?int
+    {
+        return $this->budgetVol1;
+    }
+
+    public function setBudgetVol1(int $budgetVol1): self
+    {
+        $this->budgetVol1 = $budgetVol1;
+
+        return $this;
+    }
+
+    public function getActualVol2(): ?int
+    {
+        return $this->actualVol2;
+    }
+
+    public function setActualVol2(?int $actualVol2): self
+    {
+        $this->actualVol2 = $actualVol2;
+
+        return $this;
+    }
+
+    public function getBudgetVol2(): ?int
+    {
+        return $this->budgetVol2;
+    }
+
+    public function setBudgetVol2(?int $budgetVol2): self
+    {
+        $this->budgetVol2 = $budgetVol2;
+
+        return $this;
+    }
+
 }

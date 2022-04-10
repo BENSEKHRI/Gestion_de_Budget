@@ -43,10 +43,46 @@
                     <a href="{{ path('app_home') }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Tableau de bord</a>
                 {% endif %}
                 
-                {% if currentPath == path('app_budget_saisie_budgetaire') %}
-                    <a href="{{ path('app_budget_saisie_budgetaire') }}" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>Saisie Budgétaire</a>
+                {% if 'ROLE_ADMIN' in app.user.roles %}
+                    {% if currentPath == path('app_budget_saisie_budgetaire') or currentPath == path('app_budget_choix_mois', {'id':1 })%}
+                        <div class="nav-item dropdown">
+                            <a href="{{ path('app_budget_saisie_budgetaire') }}" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"><i class="fa fa-table me-2"></i>Saisie Budgétaire</a>
+                            <div class="dropdown-menu bg-transparent border-0">
+                                
+                                {% if currentPath == path('app_budget_saisie_budgetaire') %}
+                                    <a href="{{ path('app_budget_choix_mois', {'id': 1}) }}" class="dropdown-item text-center">Choix des mois</a>
+                                    <a href="{{ path('app_budget_saisie_budgetaire') }}" class="dropdown-item active">Grille budgétaire</a>
+                                {% elseif currentPath == path('app_budget_choix_mois', {'id':1 })%}
+                                    <a href="{{ path('app_budget_choix_mois', {'id': 1}) }}" class="dropdown-item active">Choix des mois</a>
+                                    <a href="{{ path('app_budget_saisie_budgetaire') }}" class="dropdown-item text-center">Grille budgétaire</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="nav-item dropdown">
+                            <a href="{{ path('app_budget_saisie_budgetaire') }}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-table me-2"></i>Saisie Budgétaire</a>
+                            <div class="dropdown-menu bg-transparent border-0">
+                                <a href="{{ path('app_budget_choix_mois', {'id':1 }) }}" class="dropdown-item">Choix des mois</a>
+                                <a href="{{ path('app_budget_saisie_budgetaire') }}" class="dropdown-item">Grille budgétaire</a>
+                            </div>
+                        </div>
+                    {% endif %}
                 {% else %}
-                    <a href="{{ path('app_budget_saisie_budgetaire') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Saisie Budgétaire</a>
+                    {% if currentPath == path('app_budget_saisie_budgetaire')%}
+                        <div class="nav-item dropdown">
+                            <a href="{{ path('app_budget_saisie_budgetaire') }}" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"><i class="fa fa-table me-2"></i>Saisie Budgétaire</a>
+                            <div class="dropdown-menu bg-transparent border-0">
+                                <a href="{{ path('app_budget_saisie_budgetaire') }}" class="dropdown-item active">Grille budgétaire</a>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="nav-item dropdown">
+                            <a href="{{ path('app_budget_saisie_budgetaire') }}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-table me-2"></i>Saisie Budgétaire</a>
+                            <div class="dropdown-menu bg-transparent border-0">
+                                <a href="{{ path('app_budget_saisie_budgetaire') }}" class="dropdown-item">Grille budgétaire</a>
+                            </div>
+                        </div>
+                    {% endif %}
                 {% endif %}
                 
                 {% if currentPath == path('app_budget_reporting') %}

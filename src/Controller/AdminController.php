@@ -102,7 +102,7 @@ class AdminController extends AbstractController
      /**
      *  Modifier le compte de l'utilisateuer courant
      */
-    #[Route('/admin/compte', name: 'app_admin_compte')]
+    #[Route('/compte', name: 'app_admin_compte')]
     public function edit(Request $request, EntityManagerInterface $entityManager) {
         
         $user = $this->getUser();
@@ -125,7 +125,7 @@ class AdminController extends AbstractController
      /**
      *  Modifier le mot de passe de l'utilisateur courant
      */
-    #[Route('/admin/ChangerLeMotDePasse', name: 'app_admin_changePasseword')]
+    #[Route('/ChangerLeMotDePasse', name: 'app_admin_changePasseword')]
     public function changePassword(Request $request, UserPasswordEncoderInterface $encoder,  EntityManagerInterface $entityManager) {
 
         $user = $this->getUser();

@@ -65,10 +65,9 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Rôles'
             ])
 
-            ->add('plainPassword', PasswordType::class, [
+            ->add('password', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
-                'mapped' => false,
                 'attr' => [
                     'autocomplete' => 'new-password',
                     'class' => 'form-control'
@@ -85,6 +84,7 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
+                'required' => false,
             ])
         ;
     }

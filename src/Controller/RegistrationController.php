@@ -26,10 +26,9 @@ class RegistrationController extends AbstractController
             $user->setPassword(
             $userPasswordHasher->hashPassword(
                     $user,
-                    $form->get('plainPassword')->getData()
+                    $form->get('password')->getData()
                 )
             );
-
             $entityManager->persist($user);
             $entityManager->flush();
             $this->addFlash('success', 'Utilisateur ajouté(e) avec success !');

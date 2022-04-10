@@ -11,6 +11,7 @@ use App\Entity\Produit;
 use App\Form\FaitType;
 use App\Form\FaitSearchType;
 use App\Repository\FaitRepository;
+use App\Repository\MoisRepository;
 use App\Repository\FaitSearchRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,14 +35,6 @@ class FaitController extends AbstractController
         $this->FaitRepository = $FaitRepository;
     }
 
-    #[Route('/budget', name: 'app_budget')]
-    public function index(): Response
-    {
-        return $this->render('budget/index.html.twig', [
-            'controller_name' => 'BudgetController',
-        ]);
-    }
-
     /**
      *  Liste des lignes budgetaire du site dans le reporting.
      */
@@ -58,7 +51,7 @@ class FaitController extends AbstractController
      *  Liste des lignes budgetaire du site dans la saisie budgètaire.
      */
     #[Route('/budget/saisie-budgetaire', name: 'app_budget_saisie_budgetaire')]
-    public function saisieBudgetaire(PaginatorInterface  $paginator,Request $request, FaitRepository $faitsRepository, UserRepository $users)
+    public function saisieBudgetaire(PaginatorInterface  $paginator,Request $request, FaitRepository $faitsRepository, MoisRepository $mois, UserRepository $users)
     {
 
         $search = new FaitSearch();
@@ -70,6 +63,7 @@ class FaitController extends AbstractController
 
         return $this->render("budget/saisieBudgetaire.html.twig", [
             'faits' => $faits,
+            'mois' => $mois->findAll(),
             'users' => $users->findAll(),
             'form'  => $form->createView(),
         ]);
@@ -79,7 +73,7 @@ class FaitController extends AbstractController
      * Ajouter une nouvelle ligne budgétaire
      */
     #[Route('/budget/nouvelle-ligne', name: 'app_budget_nouvelle_ligne')]
-    public function newBudget (Request $request, EntityManagerInterface $entityManager, FaitRepository $faits, UserRepository $users)
+    public function newBudget (Request $request, EntityManagerInterface $entityManager, FaitRepository $faits, MoisRepository $mois, UserRepository $users)
     {
       $fait = new Fait;
 
@@ -95,6 +89,7 @@ class FaitController extends AbstractController
       return $this->render('budget/NewSaisieBudgetaire.html.twig', [
         'fait' => $fait,
         'faitForm' => $form->createView(),
+        'mois' => $mois->findAll(),
         'faits' => $faits->findAll(),
         'users' => $users->findAll(),
       ]);
@@ -105,7 +100,7 @@ class FaitController extends AbstractController
      *  Modifier une ligne budgétaire 
      */
     #[Route('/budget/modifier/{id}', name: 'app_budget_modifier_ligne')]
-    public function editBudget($id, Request $request, EntityManagerInterface $entityManager, FaitRepository $faits, UserRepository $users)
+    public function editBudget($id, Request $request, EntityManagerInterface $entityManager, FaitRepository $faits, MoisRepository $mois, UserRepository $users)
     {
         $fait = $this->FaitRepository->find($id);
 
@@ -124,6 +119,7 @@ class FaitController extends AbstractController
         }
         return $this->render('budget/EditSaisieBudgetaire.html.twig', [
             'faitForm' => $form->createView(),
+            'mois' => $mois->findAll(),
             'faits' => $faits->findAll(),
             'users' => $users->findAll(),
         ]);

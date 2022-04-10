@@ -16,7 +16,7 @@
 <body>
 <!-- Table Start -->
 {{ include('_navbar.html.twig') }}
-<div class="container-fluid pt-0 px-3">
+<div class="container-fluid">
     <div class="row g-4">
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
@@ -28,13 +28,13 @@
                     <table class="table table-bordered">
                         {{form_start(form)}}
                             <tr>
-                                <td class="text-center align-middle">Géographie</td>
+                                <th class="text-center align-middle text-dark">Géographie</th>
                                 <td>{{ form_widget(form.geographie) }}</td>
                                 <td class ="align-middle"><button type="submit" class="btn btn-outline-warning rounded-pill"><i class="bi bi-search"></i></button></td>
 
                             </tr>
                             <tr>
-                                <td class="text-center align-middle">Canal</td>
+                                <th class="text-center align-middle text-dark">Canal</th>
                                 <td>{{ form_widget(form.canal) }}</td>
                                 <td><a href="{{ path('app_budget_nouvelle_ligne')}}" class="btn btn-outline-success rounded-pill"><i class="fa fa-solid fa-plus"></i></a></td>
                             </tr>
@@ -44,46 +44,108 @@
                 </div>
 
                 <div class="table-responsive align-middle text-center">
-
-                    {% for fait in faits %}
-                        {% if not (faits is empty) %}
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr class="table">
-                                <th scope="col" colspan="2"rowspan="2"></th>
-                                <th scope="col" colspan="3" class="table-danger text-center">{{ fait.date|date('M/Y') }}</th>
-                                
-                            </tr>
-
-                            <tr class= "table">
-                                <th scope="col" class="table-danger">Actual</th>
-                                <th scope="col" class="table-danger">Budget</th>
-                                <th scope="col" class="table-danger">Variance</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {# On boucle sur les lignes des faits #}
-                            
-
-                                <tr>
-                                    <th class="table-danger">{{ fait.produit.getNomProduit()|capitalize }}</th>
-                                    <th class="table-danger">Price</th>
-                                    <td class="table-warning">{{ fait.actual }} €</td>
-                                    <td class="table-success">{{ fait.budget }} €</td>
-                                    {% set variance = fait.actual-fait.budget %}
-                                    <td class="table-info">{{ variance }} €</td>
-
-                                    <td> 
-                                        <a href="{{ path('app_budget_modifier_ligne', {'id':fait.id}) }}" class="btn btn-outline-info rounded-pill"><i class="fa fa-solid fa-wrench"></i></a> 
-                                        <a href="{{ path('app_budget_supprimer_ligne', {'id':fait.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?');" class="btn btn-outline-danger rounded-pill"><i class="fa fa-solid fa-minus"></i></a>                                             
-                                    </td>
+                    {% if not (faits is empty) %}
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="table text-center align-middle">
+                                    <th scope="col" colspan="2"rowspan="2"></th>
+                                    <th scope="col" colspan="3" class="table-danger text-center">{{ mois[0].date|date('M/Y') }}</th>
+                                    <th scope="col" colspan="3" class="table-danger text-center">{{ mois[0].date1|date('M/Y') }}</th>
+                                    <th scope="col" colspan="3" class="table-danger text-center">{{ mois[0].date2|date('M/Y') }}</th>
+                                    <th scope="col" colspan="1"rowspan="2">ACTION</th>
                                 </tr>
-                        </tbody>
-                    </table>
+
+                                <tr class= "table">
+                                    <th scope="col" class="table-danger">Actual</th>
+                                    <th scope="col" class="table-danger">Budget</th>
+                                    <th scope="col" class="table-danger">Variance</th>
+                                    <th scope="col" class="table-danger">Actual</th>
+                                    <th scope="col" class="table-danger">Budget</th>
+                                    <th scope="col" class="table-danger">Variance</th>
+                                    <th scope="col" class="table-danger">Actual</th>
+                                    <th scope="col" class="table-danger">Budget</th>
+                                    <th scope="col" class="table-danger">Variance</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center align-middle">
+                                {# On boucle sur les lignes des faits #}
+
+                                {% for fait in faits %}
+                                    {% if not (faits is empty) %}
+                                    <tr>
+                                        <th scope="row" rowspan="3" class="table-danger">{{ fait.produit.getNomProduit()|capitalize }}</th>
+                                        <th scope="row" class="table-danger">Price </th>
+                                        <td class="table-info">{{ fait.actual }} </td>
+                                        <td class="table-warning">{{ fait.budget }} </td>
+                                        {% set variance = fait.actual-fait.budget %}
+                                        <td class="table-success">{{ variance }} </td>
+                                        
+                                        <td class="table-info">{{ fait.actual1 }} </td>
+                                        <td class="table-warning">{{ fait.budget1 }} </td>
+                                        {% set variance = fait.actual1-fait.budget1 %}
+                                        <td class="table-success">{{ variance }} </td>
+
+                                        <td class="table-info">{{ fait.actual2 }} </td>
+                                        <td class="table-warning">{{ fait.budget2 }} </td>
+                                        {% set variance = fait.actual2-fait.budget2 %}
+                                        <td class="table-success">{{ variance }} </td>
+
+                                        <td rowspan="3"> 
+                                            <a href="{{ path('app_budget_modifier_ligne', {'id':fait.id}) }}" class="btn btn-sm btn-sm-square btn-outline-primary"><i class="fa fa-solid fa-wrench"></i></a> 
+                                            <a href="{{ path('app_budget_supprimer_ligne', {'id':fait.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ligne ?');" class="btn btn-sm btn-sm-square btn-outline-danger"><i class="fa fa-solid fa-minus"></i></a>                                             
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row" class="table-danger">Volume</th>
+                                        <td class="table-info">{{ fait.actualVol }} </td>
+                                        <td class="table-warning">{{ fait.budgetVol }} </td>
+                                        {% set variance = fait.actualVol-fait.budgetVol %}
+                                        <td class="table-success">{{ variance }} </td>
+                                        
+                                        <td class="table-info">{{ fait.actualVol1 }} </td>
+                                        <td class="table-warning">{{ fait.budgetVol1 }} </td>
+                                        {% set variance = fait.actualVol1-fait.budgetVol1 %}
+                                        <td class="table-success">{{ variance }} </td>
+
+                                        <td class="table-info">{{ fait.actualVol2 }} </td>
+                                        <td class="table-warning">{{ fait.budgetVol2 }} </td>
+                                        {% set variance = fait.actualVol2-fait.budgetVol2 %}
+                                        <td class="table-success">{{ variance }} </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row" class="table-danger">Revenue </th>
+                                        {% set revenue1 = fait.actual*fait.actualVol %}
+                                        <td class="table-success">{{ revenue1 }} </td>
+                                        {% set revenue2 = fait.budget*fait.budgetVol %}
+                                        <td class="table-success">{{ revenue2 }} </td>
+                                        {% set revenue = revenue1-revenue2 %}
+                                        <td class="table-success">{{ revenue }} </td>
+                                        
+                                        {% set revenue1 = fait.actual1*fait.actualVol1 %}
+                                        <td class="table-success">{{ revenue1 }} </td>
+                                        {% set revenue2 = fait.budget1*fait.budgetVol1 %}
+                                        <td class="table-success">{{ revenue2 }} </td>
+                                        {% set revenue = revenue1-revenue2 %}
+                                        <td class="table-success">{{ revenue }} </td>
+
+                                        {% set revenue1 = fait.actual2*fait.actualVol2 %}
+                                        <td class="table-success">{{ revenue1 }} </td>
+                                        {% set revenue2 = fait.budget2*fait.budgetVol2 %}
+                                        <td class="table-success">{{ revenue2 }} </td>
+                                        {% set revenue = revenue1-revenue2 %}
+                                        <td class="table-success">{{ revenue }} </td>
+                                    </tr>
+                                {% else %}
+                                    Il n'y a aucune ligne dans votre grille budgétaire. 
+                                {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     {% else %}
-                        Il n'y a aucune ligne dans votre grille budgétaire. 
+                        <p>Il n'y a aucune ligne budgétaire pour ce tri.</p> 
                     {% endif %}
-                    {% endfor %}
                 </div>
             </div>
         </div>

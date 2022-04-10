@@ -23,26 +23,28 @@
                 <h3 class="mb-4 text-center text-uppercase">Rapport général</h3>
                 <div class="table-responsive col-8 mx-auto">
                 {# On boucle sur les lignes du fait #}
-                {% for fait in faits %}
-                    {% if not (faits is empty) %}
-                    <table class="table table-bordered text-center">
+                    <table class="table table-bordered table-hover text-center">
                         <thead>
                             <tr>
-                                <th class="col-4">Géographie</th>
-                                <th class="col-4">Canal</th>
+                                <th class="col-4 table-success">Géographie</th>
+                                <th class="col-4 table-info">Canal</th>
+                                <th class="col-4 table-warning">Produit</th>
                             </tr>
                         </thead>
                         <tbody>
+                        {% for fait in faits |sort %}
+                            {% if not (faits is empty) %}
                             <tr>
-                                <td class="col-4">{{ fait.geographie.getPays()|capitalize}}</td>
-                                <td class="col-4">{{ fait.canal.getTypeCanal()|capitalize }}</td>
+                                <td class="col-4 table-success">{{ fait.geographie.getPays()|capitalize}}</td>
+                                <td class="col-4 table-info">{{ fait.canal.getTypeCanal()|capitalize }}</td>
+                                <td class="col-4 table-warning">{{ fait.produit.getNomProduit()|capitalize }}</td>
                             </tr>
+                            {% else %}
+                                <p>Il n'y a aucune ligne dans votre grille budgétaire. </br></p>
+                            {% endif %}
+                        {% endfor %}
                         </tbody>
                     </table>
-                    {% else %}
-                        <p>Il n'y a aucune ligne dans votre grille budgétaire. </br></p>
-                    {% endif %}
-                {% endfor %}
                 </div>
             </div>
         </div>

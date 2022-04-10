@@ -16,61 +16,70 @@
 <body>
 <!-- Table Start -->
 {{ include('_navbar.html.twig') }}
-<div class="container-fluid pt-0 px-3">
-    <div class="row g-4">
+<div class="container-fluid">
+    <div class="row">
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
                 <div class="mb-3">
                     <h3 class="text-center text-uppercase">Saisie Budgétaire</h3>
                 </div>
-
-                <div class="table-responsive col-4 mx-auto">
-                    {{form_start(faitForm)}}
-                    <table class="table table-bordered">
-                            <tr>
-                                <td class="text-center align-middle">Géographie</td>
-                                <td>{{ form_widget(faitForm.geographie) }}</td>
-                                <td class ="align-middle"rowspan="3"><button type="submit" class="btn btn-outline-warning rounded-pill"><i class="bi bi-search"></i></button></td>
-                            </tr>
-                            <tr>
-                                <td class="text-center align-middle">Canal</td>
-                                <td>{{ form_widget(faitForm.canal) }}</td>
-                            </tr>
-                            
-                    </table>
+                <div class="mb-4">
+                    <h5 class="text-center text-uppercase text-primary">Modification d'une ligne budgétaire</h5>
                 </div>
 
                 <div class="table-responsive">
-                    <a href="{{ path('app_budget_nouvelle_ligne')}}" class="my-2 btn btn-outline-success rounded-pill"><i class="fa fa-solid fa-plus"></i></a> 
-
                     <table class="table table-bordered">
+                        {{ form_start(faitForm) }}
                         <thead>
-                            <tr class="table">
-                                <th scope="col" colspan="2"rowspan="2"></th>
-                                <th scope="col" colspan="3" class="table-danger text-center">{{ form_widget(faitForm.date) }}</th>
+                            <tr class="table align-middle">
+                                <th scope="col" colspan="4" class="text-center align-middle">
+                                     <a href="{{ path('app_budget_saisie_budgetaire') }}" class="btn btn-outline-dark rounded-pill"><i class="fa fa-solid bi-arrow-left-circle"></i></a>
+                                    <button type="submit" class="btn btn-outline-success rounded-pill"><i class="fa fa-solid fa-check"></i></button>
+                                </th>
+                                <th scope="col" colspan="2" class="table-danger text-center">{{ mois[0].date|date('M/Y') }}</th>
+                                <th scope="col" colspan="2" class="table-danger text-center">{{ mois[0].date1|date('M/Y') }}</th>
+                                <th scope="col" colspan="2" class="table-danger text-center">{{ mois[0].date2|date('M/Y') }}</th>
                                 
                             </tr>
 
-                            <tr class= "table">
-                                <th scope="col" class="table-danger">Actual</th>
+                            <tr class= "table text-center">
+                                <th scope="col" class="table-danger">Géographie</th>
+                                <th scope="col" class="table-danger">Canal</th>
+                                <th scope="col" colspan="2" class="table-danger">Produit</th>
+                                <th scope="col" class="table-danger">Actuel</th>
                                 <th scope="col" class="table-danger">Budget</th>
-                                <th scope="col" class="table-danger">Action</th>
+                                <th scope="col" class="table-danger">Actuel</th>
+                                <th scope="col" class="table-danger">Budget</th>
+                                <th scope="col" class="table-danger">Actuel</th>
+                                <th scope="col" class="table-danger">Budget</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="align-middle">
+                            
                             <tr>
-                                <th class="table-danger">{{ form_widget(faitForm.produit) }}</th>
-                                <th class="table-danger">Price</th>
-                                <td class="table-warning">{{ form_widget(faitForm.actual) }}</td>
-                                <td class="table-success">{{ form_widget(faitForm.budget) }}</td>
-
-                                <td> 
-                                    <button type="submit" class="btn btn-outline-success rounded-pill"><i class="fa fa-solid fa-check"></i></button>
-                                </td>
+                                <td rowspan="2" class="table-secondary"> {{ form_widget(faitForm.geographie) }}</td>
+                                <td rowspan="2" class="table-secondary"> {{ form_widget(faitForm.canal) }}</td>
+                                <td rowspan="2" class="table-secondary"> {{ form_widget(faitForm.produit) }}</td>
+                                <th scope="row" class="table-danger">Price</th>
+                                <td class="table-info"> {{ form_widget(faitForm.actual) }}</td>
+                                <td class="table-warning"> {{ form_widget(faitForm.budget) }}</td>
+                                <td class="table-info"> {{ form_widget(faitForm.actual1) }}</td>
+                                <td class="table-warning"> {{ form_widget(faitForm.budget1) }}</td>
+                                <td class="table-info"> {{ form_widget(faitForm.actual2) }}</td>
+                                <td class="table-warning"> {{ form_widget(faitForm.budget2) }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="table-danger">Volume</th>
+                                <td class="table-info"> {{ form_widget(faitForm.actualVol) }}</td>
+                                <td class="table-warning"> {{ form_widget(faitForm.budgetVol) }}</td>
+                                <td class="table-info"> {{ form_widget(faitForm.actualVol1) }}</td>
+                                <td class="table-warning"> {{ form_widget(faitForm.budgetVol1) }}</td>
+                                <td class="table-info"> {{ form_widget(faitForm.actualVol2) }}</td>
+                                <td class="table-warning"> {{ form_widget(faitForm.budgetVol2) }}</td>
                             </tr>
                         </tbody>
+                        {{ form_end(faitForm) }}
                     </table>
-                    {{ form_end(faitForm) }}
                 </div>
             </div>
         </div>
@@ -79,3 +88,4 @@
 <!-- Table End -->
 </body>
 {% endblock %}
+

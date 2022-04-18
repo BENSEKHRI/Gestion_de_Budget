@@ -37,3 +37,7 @@ npm run build
 sudo /opt/lampp/xampp start
 symfony serve -d
 ```
+
+# Lancer la page d'accueil
+
+Une fois la dernière commande de l'environnement de développement lancée, rendez vous sur l'url : https://127.0.0.1:8000 arrivé sur la page d'accueil.

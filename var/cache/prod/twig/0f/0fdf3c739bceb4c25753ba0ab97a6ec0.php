@@ -25,7 +25,7 @@ class __TwigTemplate_2135f8269ce3a0a8344c7353b0991cf3 extends Template
         $this->source = $this->getSourceContext();
 
         $this->blocks = [
-            'title' => [$this, 'block_title'],
+            'titile' => [$this, 'block_titile'],
             'body' => [$this, 'block_body'],
         ];
     }
@@ -43,37 +43,34 @@ class __TwigTemplate_2135f8269ce3a0a8344c7353b0991cf3 extends Template
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 2
-    public function block_title($context, array $blocks = [])
+    // line 3
+    public function block_titile($context, array $blocks = [])
     {
         $macros = $this->macros;
         echo "Page non trouvée";
     }
 
-    // line 4
+    // line 5
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
-        // line 5
+        // line 6
         echo "    <!-- 404 Start -->
-    <div class=\"container-fluid\">
-            <div class=\"row my-5 bg-light rounded align-items-center justify-content-center \">
-                <div class=\"col-md-6 text-center p-4\">
-                    <i class=\"bi bi-exclamation-triangle display-1 text-primary\"></i>
-                    <h1 class=\"display-1 fw-bold\">404</h1>
-                    <h1 class=\"mb-4\">Page non trouvée</h1>
-                    <p class=\"mb-4\">Nous sommes désolés, la page que vous avez recherchée n'existe pas sur notre site !
-                        Vous pouvez peut-être aller sur notre page d'accueil ou essayer d'utiliser une recherche ?</p>
-                    <a href=\"";
+    <div class=\"container-fluid pt-4 px-4\">
+        <div class=\"row vh-100 bg-light rounded align-items-center justify-content-center mx-0\">
+            <div class=\"col-md-6 text-center p-4\">
+                <i class=\"bi bi-exclamation-triangle display-1 text-primary\"></i>
+                <h1 class=\"display-1 fw-bold\">404</h1>
+                <h1 class=\"mb-4\">Page non trouvée</h1>
+                <p class=\"mb-4\">Nous sommes désolés, la page que vous avez recherchée n'existe pas sur notre site ! Vous pouvez peut-être aller sur notre page d'accueil ou essayer d'utiliser une recherche ?</p>
+                <a class=\"btn btn-primary rounded-pill py-3 px-5\" href=\"";
         // line 14
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home");
-        echo "\" class=\"btn btn-primary rounded-pill py-3 px-5\" href=\"\">Retourner à l'accueil</a>
-                </div>
+        echo "\">Retourner à l'accueil</a>
             </div>
         </div>
     </div>
     <!-- 404 End -->
-
 ";
     }
 
@@ -89,7 +86,7 @@ class __TwigTemplate_2135f8269ce3a0a8344c7353b0991cf3 extends Template
 
     public function getDebugInfo()
     {
-        return array (  69 => 14,  58 => 5,  54 => 4,  47 => 2,  36 => 1,);
+        return array (  68 => 14,  58 => 6,  54 => 5,  47 => 3,  36 => 1,);
     }
 
     public function getSourceContext()

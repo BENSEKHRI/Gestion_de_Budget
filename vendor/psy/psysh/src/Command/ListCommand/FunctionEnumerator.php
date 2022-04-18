@@ -61,9 +61,9 @@ class FunctionEnumerator extends Enumerator
     /**
      * Get defined functions.
      *
-     * Optionally limit functions to "user" or "internal" functions.
+     * Optionally limit functions to user or "internal" functions.
      *
-     * @param string|null $type "user" or "internal" (default: both)
+     * @param string|null $type user or "internal" (default: both)
      *
      * @return array
      */

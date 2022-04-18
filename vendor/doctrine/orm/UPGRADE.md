@@ -683,7 +683,7 @@ Example:
 
 SELECT u AS user FROM User u
 
-Will now return a collection of arrays with index "user" pointing to the User object instance.
+Will now return a collection of arrays with index user pointing to the User object instance.
 
 
 ## Performance optimizations

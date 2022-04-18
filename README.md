@@ -22,12 +22,6 @@ Pour cloner le répertoire git vous devez taper la commande suivante:
 git clone https://github.com/BENSEKHRI/Gestion_de_Budget.git
 ```
 
-Voici la commande pour installation " git ": 
-```bash 
-sudo apt-get install git
-```
-
-
 # Lancer l'environnement de développement
 
 ```bash
